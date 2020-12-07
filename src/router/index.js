@@ -24,6 +24,7 @@ const routes = [{
 import Home from '../views/home/Home.vue'
 import Repair from '../views/repair/Repair.vue'
 import Payment from '../views/payment/Payment_System.vue'
+import Door from '../views/Door.vue'
 import {
     Lazyload
 } from 'vant';
@@ -43,6 +44,10 @@ const routes = [{
     path: '/Repair',
     name: 'Repair',
     component: Repair
+}, {
+    path: '/Door',
+    name: 'Door',
+    component: Door
 }]
 remotes / origin / master
 
