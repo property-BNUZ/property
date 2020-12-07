@@ -65,6 +65,7 @@
 
 </script>
 <script>
+  import PaymentHeader from '../../components/Header.vue'
   import Mypay from './components/pay.vue'
   export default {
     props: {
@@ -80,6 +81,7 @@
     },
     mounted() {
       this.getmoneySum();
+      this.tableData[this.tableData.length - 1].date = this.getNowFormatDate();;
     },
     methods: {
       onSelect(option) {
@@ -112,7 +114,6 @@
         if (flg) {
           this.money = row.money * 100 * -1;
           this.time = this.getNowFormatDate();
-          console.log(this.time);
         } else {
           this.money = row.money * 100 * 1;
           this.showmap = 1;
@@ -120,10 +121,12 @@
           this.type = row.type;
         }
       },
-      getmoneySum(){
+      getmoneySum(){        
+        
         for(var i = 0; i < this.tableData.length; i++){
-          this.moneySum += this.tableData[i].money;
+         this.tableData[this.tableData.length - 1].money  += this.tableData[i].money;
         }
+        
       }
 
     },
@@ -136,6 +139,7 @@
         percentage: 0,
         money: 0,
         showmap: 0,
+        moneySum: 0 ,
         show: false,
         dialogVisible: false,
         dialogVisible_pay: false,
@@ -185,7 +189,7 @@
           date: '2016-05-01',
           type: '合计',
           flag: 1,
-          moneySum: 100
+          money: 0
         },]
       }
     },
