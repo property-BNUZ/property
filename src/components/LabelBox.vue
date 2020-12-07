@@ -1,10 +1,10 @@
 <template>
     <div>
-        <van-tabbar v-model="active">
+        <van-tabbar route>
             <van-tabbar-item replace to="/" icon="home-o">主页</van-tabbar-item>
-            <van-tabbar-item replace to="/" icon="like-o">服务</van-tabbar-item>
-            <van-tabbar-item replace to="/" icon="comment-o">通知</van-tabbar-item>
-            <van-tabbar-item replace to="/" icon="user-o">我的</van-tabbar-item>
+            <van-tabbar-item replace to="/server" icon="like-o">服务</van-tabbar-item>
+            <van-tabbar-item replace to="/notice" icon="comment-o">通知</van-tabbar-item>
+            <van-tabbar-item replace to="/Self" icon="user-o">我的</van-tabbar-item>
         </van-tabbar>
     </div>
 </template>
