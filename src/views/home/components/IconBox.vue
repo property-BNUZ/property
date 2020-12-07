@@ -1,12 +1,10 @@
 <template>
-    <div>
-        <van-grid :border="false" :column-num="4">
-            <van-grid-item v-for="(icon, index) in icons" :key="index" @click="toPage(icon.link)">
-                <van-image :src="icon.image" />
-                <p>{{icon.text}}</p>
-            </van-grid-item>
-        </van-grid>
-    </div>
+    <van-grid :border="false" :column-num="4">
+        <van-grid-item v-for="(icon, index) in icons" :key="index" @click="gotolink(icon)">
+            <van-image :src="icon.imgUrl" />
+            <p>{{icon.desc}}</p>
+        </van-grid-item>
+    </van-grid>
 </template>
 
 <script>
@@ -14,43 +12,57 @@
         data() {
             return {
                 icons: [{
-                    image: require('@/assets/home/board.png'),
-                    text: '小区通知',
-                    link: ''
-                }, {
-                    image: require('@/assets/home/wrench.png'),
-                    text: '小区报修',
-                    link: 'Repair'
-                }, {
-                    image: require('@/assets/home/bill.png'),
-                    text: '生活缴费',
-                    link: ''
-                }, {
-                    image: require('@/assets/home/door.png'),
-                    text: '手机开门',
-                    link: ''
-                }, {
-                    image: require('@/assets/home/express.png'),
-                    text: '快递代收',
-                    link: ''
-                }, {
-                    image: require('@/assets/home/supermarket.png'),
-                    text: '生活超市',
-                    link: ''
-                }, {
-                    image: require('@/assets/home/housekeeping.png'),
-                    text: '小区家政',
-                    link: ''
-                }, {
-                    image: require('@/assets/home/opinion.png'),
-                    text: '意见建议',
-                    link: ''
-                }, ]
+                        id: "001",
+                        imgUrl: require('@/assets/icon/note.png'),
+                        desc: "小区公告",
+                        link: ''
+                    },
+                    {
+                        id: "002",
+                        imgUrl: require('@/assets/icon/repair.png'),
+                        desc: "小区维修",
+                        link: 'Repair'
+                    },
+                    {
+                        id: "003",
+                        imgUrl: require('@/assets/icon/pay.png'),
+                        desc: "生活缴费",
+                        link: 'Payment'
+                    },
+                    {
+                        id: "004",
+                        imgUrl: require('@/assets/icon/door.png'),
+                        desc: "手机开门",
+                        link: ''
+                    },
+                    {
+                        id: "005",
+                        imgUrl: require('@/assets/icon/package.png'),
+                        desc: "快递代收",
+                        link: ''
+                    },
+                    {
+                        id: "006",
+                        imgUrl: require('@/assets/icon/car.png'),
+                        desc: "生活超市",
+                        link: ''
+                    },
+                    {
+                        id: "007",
+                        imgUrl: require('@/assets/icon/service.png'),
+                        desc: "小区家政"
+                    },
+                    {
+                        id: "008",
+                        imgUrl: require('@/assets/icon/advice.png'),
+                        desc: "意见建议"
+                    },
+                ],
             }
         },
         methods: {
-            toPage(link) {
-                this.$router.replace('/' + link);
+            gotolink(icon) {
+                this.$router.replace('/' + icon.link);
             }
         }
     }
@@ -60,7 +72,6 @@
     .van-grid-item .van-image {
         height: 40px;
         width: 40px;
-
         color: #646566;
     }
 

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <van-nav-bar title="生活缴费" left-text="返回" left-arrow @click-left="onClickLeft" />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <van-swipe-cell>
       <van-card desc="住址：4栋1单元101" title="姓名：李爱国" thumb="https://img.yzcdn.cn/vant/cat.jpeg" />
@@ -64,6 +65,9 @@
       },
     },
     methods: {
+      onClickLeft() {
+        this.$router.replace('/')
+      },
       getNowFormatDate() {
         var date = new Date();
         var seperator1 = "-";
