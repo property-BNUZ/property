@@ -8,9 +8,9 @@
       </template>
       </van-card>
     </van-swipe-cell>
-    <van-panel title="申请须知" desc="请仔细阅读一下内容，否则后果自负">
+    <van-panel title="申请须知" desc="请仔细阅读以下内容，否则后果自负" style="font-size: 14px">
       <div style="padding: 20px">
-        <span style="line-height: 30px">
+        <span style="line-height: 25px">
         1、严禁翻越围栏或围墙
         </br>
         2、来访人员须向门卫出示申请码
@@ -78,6 +78,12 @@
     <van-cell v-for="item in list" :key="item" :title="item" />
     </van-list>
     </van-dialog>
+    <van-divider
+      :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }"
+      >
+      请登录粤康码将14天内行程截图并提交
+    </van-divider>
+    <van-uploader v-model="fileList" multiple style="margin-left: 13px"/>
   </div>
 </template>
 
@@ -161,6 +167,11 @@
         loading: false,
         finished: false,
         showList: false,
+        fileList: [
+        { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
+        // Uploader 根据文件后缀来判断是否为图片文件
+        // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+      ],
       }
     },
   }
