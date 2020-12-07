@@ -1,0 +1,42 @@
+[33mcommit db9866ce112ce24464d9622350609fab17939323[m[33m ([m[1;36mHEAD -> [m[1;32mnewbranch[m[33m)[m
+Author: Alex-3102 <1175106117@qq.com>
+Date:   Mon Dec 7 08:51:16 2020 +0800
+
+    完成报修界面的部分代码
+
+[33mcommit 6334dfae0209585ab77d1edcc7128c232cf79a0d[m
+Author: Alex-3102 <1175106117@qq.com>
+Date:   Sun Dec 6 22:41:57 2020 +0800
+
+    对项目进行分包和完成主页代码
+
+[33mcommit c9ac8da51dfb0cf94c8464631ea0d3e0ec2dd2a2[m
+Author: andy304 <1592435948@qq.com>
+Date:   Thu Dec 3 09:58:28 2020 +0800
+
+    更新
+
+[33mcommit fc6db57fa1f9c8ab6d30794703cf469d3c7ac3a9[m
+Merge: ec340fd b16f0fb
+Author: andy304 <1592435948@qq.com>
+Date:   Thu Dec 3 09:12:32 2020 +0800
+
+    Merge branch 'master' of https://github.com/property-BNUZ/property
+
+[33mcommit ec340fdef17970e7da051751404573b0cdc97497[m
+Author: andy304 <1592435948@qq.com>
+Date:   Thu Dec 3 09:09:48 2020 +0800
+
+    更新缴费系统
+
+[33mcommit b16f0fb56c8d21e6bb487c7c82f75848a231a429[m
+Author: andy304yang <65676375+andy304yang@users.noreply.github.com>
+Date:   Fri Nov 27 21:54:40 2020 +0800
+
+    Update README.md
+
+[33mcommit 4e1221b4dc663d587e720f0f7613e3f0cab8d663[m
+Author: andy304 <1592435948@qq.com>
+Date:   Fri Nov 27 21:44:20 2020 +0800
+
+    first commit
