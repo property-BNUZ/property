@@ -1,24 +1,31 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Payment from '../views/Payment_System.vue'
+import Home from '../views/home/Home.vue'
+import Repair from '../views/repair/Repair.vue'
+import Payment from '../views/payment/Payment_System.vue'
+import {
+    Lazyload
+} from 'vant';
+
+Vue.use(Lazyload);
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
+}, {
     path: '/Payment',
     name: 'Payment',
     component: Payment
-  },
-]
+}, {
+    path: '/Repair',
+    name: 'Repair',
+    component: Repair
+}]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router
