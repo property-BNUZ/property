@@ -4,7 +4,7 @@
     <van-swipe-cell>
       <van-card desc="住址：4栋1单元101" title="姓名：李爱国" thumb="https://img.yzcdn.cn/vant/cat.jpeg" >
       <template #tags>
-        <van-button size="mini" color="linear-gradient(to right, #88c1fa, #1989fa)" @click="show=true">历史记录</van-button>
+        <van-button size="mini" color="linear-gradient(to right, #88c1fa, #1989fa)" @click="showList=true">历史记录</van-button>
       </template>
       </van-card>
     </van-swipe-cell>
@@ -68,7 +68,7 @@
     <span>已提交，请耐心等待管理员审核</span>
     </van-notify>
     <!-- 历史记录 -->
-    <van-dialog v-model="show" title="历史记录如下" show-cancel-button>
+    <van-dialog v-model="showList" title="历史记录如下" show-cancel-button>
     <van-list
     v-model="loading"
     :finished="finished"
@@ -160,7 +160,7 @@
         list: [],
         loading: false,
         finished: false,
-        show: false,
+        showList: false,
       }
     },
   }
