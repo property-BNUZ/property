@@ -28,7 +28,7 @@
                 }, {
                     image: require('@/assets/home/door.png'),
                     text: '手机开门',
-                    link: ''
+                    link: 'Door'
                 }, {
                     image: require('@/assets/home/express.png'),
                     text: '快递代收',
