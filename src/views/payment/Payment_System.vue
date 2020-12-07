@@ -1,5 +1,6 @@
 <template>
   <div>
+    <van-nav-bar title="生活缴费" left-text="返回" left-arrow @click-left="onClickLeft" />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <van-swipe-cell>
       <van-card desc="住址：4栋1单元101" title="姓名：李爱国" thumb="https://img.yzcdn.cn/vant/cat.jpeg" />
@@ -35,20 +36,27 @@
     </el-table>
 
     <!-- 弹窗缴费 -->
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="100%" top="60vh" @close="Close">
-      <van-circle v-if="this.showmap == 1" size="120px" v-model="currentRate" :rate="this.percentage" :speed="150"
-        layer-color="#ebedf0" :text="text" />
-      <span v-if="this.showmap == 1">您当前剩余 {{this.type}} 百分比</span>
-      <p v-if="this.showmap == 0">截至{{this.time}} 您已经欠费 {{this.money / 100}}</p>
-      <van-submit-bar v-if="this.showmap == 1" button-text="确认" @submit="dialogVisible = false" />
-      <van-submit-bar v-if="this.showmap == 0" :price="this.money" button-text="提交订单" @submit="showShare = !showShare">
-        <van-share-sheet v-model="showShare" :options="options" />
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="100%" top="50vh" @close="Close">
+      <!-- <Mypay></Mypay> -->
+      <div style="width: 100%; height: 200px;">
+        <van-circle v-if="this.showmap == 1" size="120px" v-model="currentRate" :rate="this.percentage" :speed="150"
+          layer-color="#ebedf0" :text="text" />
+        <span v-if="this.showmap == 1">您当前剩余 {{this.type}} 百分比</span>
+        <p v-if="this.showmap == 0">截至{{this.time}} 您已经欠费 {{this.money / 100}}</p>
+        <van-submit-bar v-if="this.showmap == 1" button-text="确认" @submit="dialogVisible = false" />
+      </div>
+      <van-submit-bar v-if="this.showmap == 0" :price="this.money" button-text="提交订单"
+        @submit="showShare = !showShare,dialogVisible = false">
         <template #tip>
           <span> 点击提交订单则完成缴费，请您尽早续交欠费！</span>
         </template>
       </van-submit-bar>
     </el-dialog>
+    <van-share-sheet v-model="showShare" title="选择缴费方式" @select="onSelect" :options="options" />
 
+    <el-dialog title="提示" :visible.sync="dialogVisible_pay"  width="90%" >
+      <Mypay :masg = "money"></Mypay>
+    </el-dialog>
   </div>
 
 </template>
@@ -57,13 +65,25 @@
 
 </script>
 <script>
+  import Mypay from './components/pay.vue'
   export default {
     computed: {
       text() {
         return this.currentRate.toFixed(0) + '%';
       },
     },
+    mounted() {
+      this.getmoneySum();
+    },
     methods: {
+      onSelect(option) {
+        // dialogVisible1 = true;
+        this.showShare = false;
+        this.dialogVisible_pay = true;
+      },
+      onClickLeft() {
+        this.$router.replace('/')
+      },
       getNowFormatDate() {
         var date = new Date();
         var seperator1 = "-";
@@ -94,6 +114,11 @@
           this.type = row.type;
         }
       },
+      getmoneySum(){
+        for(var i = 0; i < this.tableData.length; i++){
+          this.moneySum += this.tableData[i].money;
+        }
+      }
 
     },
 
@@ -106,6 +131,7 @@
         showmap: 0,
         show: false,
         dialogVisible: false,
+        dialogVisible_pay: false,
         showShare: false,
         options: [{
             name: '支付宝',
@@ -130,21 +156,30 @@
           date: '2016-05-04',
           type: '物业费',
           flag: 0,
-          city: '普陀区',
           money: 500
         }, {
           date: '2016-05-01',
           type: '水费',
           flag: 0,
-          city: '普陀区',
           money: 100
         }, {
+          date: '2016-05-01',
+          type: '宽带费',
+          flag: 1,
+          money: -300
+        },
+        {
           date: '2016-05-03',
           type: '电费',
           flag: 1,
-          city: '普陀区',
           money: -900
-        }]
+        },
+        {
+          date: '2016-05-01',
+          type: '合计',
+          flag: 1,
+          moneySum: 100
+        },]
       }
     },
 
@@ -153,6 +188,7 @@
 
 
 <style>
+
   .wrapper {
     display: flex;
     align-items: center;
