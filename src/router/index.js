@@ -4,13 +4,9 @@ import Home from '../views/home/Home.vue'
 import Repair from '../views/repair/Repair.vue'
 import Payment from '../views/payment/Payment_System.vue'
 import Door from '../views/door/Door.vue'
-Vue.use(VueRouter)
-
-import {
-    Lazyload
-} from 'vant';
-
-Vue.use(Lazyload);
+import Self from '../views/self/Self.vue'
+import Server from '../views/server/Server'
+import Notice from '../views/notice/Notice'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -29,6 +25,18 @@ const routes = [{
     path: '/Door',
     name: 'Door',
     component: Door
+}, {
+    path: '/Self',
+    name: 'Self',
+    component: Self
+}, {
+    path: '/Server',
+    name: 'Server',
+    component: Server
+}, {
+    path: '/Notice',
+    name: 'Notice',
+    component: Notice
 }, ]
 const router = new VueRouter({
     routes
