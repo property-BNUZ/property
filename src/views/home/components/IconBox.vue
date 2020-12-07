@@ -33,7 +33,7 @@
                         id: "004",
                         imgUrl: require('@/assets/icon/door.png'),
                         desc: "手机开门",
-                        link: ''
+                        link: 'Door'
                     },
                     {
                         id: "005",

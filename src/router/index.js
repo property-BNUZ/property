@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/home/Home.vue'
 import Repair from '../views/repair/Repair.vue'
 import Payment from '../views/payment/Payment_System.vue'
+import Door from '../views/door/Door.vue'
+Vue.use(VueRouter)
+
 import {
     Lazyload
 } from 'vant';
@@ -22,8 +25,11 @@ const routes = [{
     path: '/Repair',
     name: 'Repair',
     component: Repair
-}]
-
+}, {
+    path: '/Door',
+    name: 'Door',
+    component: Door
+}, ]
 const router = new VueRouter({
     routes
 })
