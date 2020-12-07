@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Payment from '../views/Payment_System.vue'
+import Index from '../views/Index.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -15,6 +17,12 @@ const routes = [
     name: 'Payment',
     component: Payment
   },
+  {
+    path: '/Index',
+    name: 'Index',
+    component: Index
+  },
+  
 ]
 
 const router = new VueRouter({
