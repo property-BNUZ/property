@@ -62,7 +62,14 @@
         },
         methods: {
             gotolink(icon) {
-                this.$router.replace('/' + icon.link);
+                this.$router.push({
+                    path: '/' + icon.link,
+                    query: {
+                        backurl: ''
+                    }
+                })
+                // this.$router.replace('/' + icon.link);
+
             }
         }
     }
