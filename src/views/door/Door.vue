@@ -1,6 +1,7 @@
 <template>
   <div>
-    <door-header :title="title" />
+    <!-- <door-header :title="title" /> -->
+    <door-header :title="title" :backurl='this.$route.query.backurl' />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <van-swipe-cell>
       <van-card desc="住址：4栋1单元101" title="姓名：李爱国" thumb="https://img.yzcdn.cn/vant/cat.jpeg" >
@@ -13,23 +14,23 @@
       <div style="padding: 20px">
         <span style="line-height: 25px">
         1、严禁翻越围栏或围墙
-        </br>
+        <br/>
         2、来访人员须向门卫出示申请码
-        </br>
+        <br/>
         3、未经业主或房屋使用人同意，任何人员不得随意进入房屋
-        </br>
+        <br/>
         4、请着装整齐、举止文明
-        </br>
+        <br/>
         5、严禁在小区内从事违章、违法活动
-        </br>
+        <br/>
         6、外来人员进出小区必须严格遵守本小区物业管理规定，不
-        </br>
+        <br/>
            得影响公共安全，破坏公共环境和损害业主权益
-           </br>
+           <br/>
         7、严易燃、易爆、剧毒、放射性物品材料进入小区
-        </br>
+        <br/>
         8、疫情期间请登录粤康码，并在申请时上传14天内行程截图
-        </br>
+        <br/>
         </span>
       </div>
       <template #footer #right>
