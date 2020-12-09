@@ -22,7 +22,6 @@
                 type: String,
                 default: ""
             }
-
         },
         methods: {
             onClickLeft() {

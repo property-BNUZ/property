@@ -39,7 +39,7 @@
                         id: "005",
                         imgUrl: require('@/assets/icon/package.png'),
                         desc: "快递代收",
-                        link: ''
+                        link: 'express'
                     },
                     {
                         id: "006",

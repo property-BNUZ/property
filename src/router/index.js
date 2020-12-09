@@ -7,6 +7,7 @@ import Door from '../views/door/Door.vue'
 import Self from '../views/self/Self.vue'
 import Server from '../views/server/Server'
 import Notice from '../views/notice/Notice'
+import Express from '../views/express/index.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -37,6 +38,10 @@ const routes = [{
     path: '/Notice',
     name: 'Notice',
     component: Notice
+},{
+    path: '/Express',
+    name: 'Express',
+    component: Express
 }, ]
 const router = new VueRouter({
     routes

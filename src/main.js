@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
 import Mypay from './views/payment/components/pay.vue'
-
+import MyBlack from './components/Header.vue'
 import Vant from 'vant';
 
 import 'vant/lib/index.css';
@@ -14,6 +14,7 @@ Vue.use(Vant);
 Vue.config.productionTip = false
 
 Vue.component("Mypay", Mypay); //注册组件
+Vue.component("MyBlack", MyBlack); //注册组件
 
 
 new Vue({
