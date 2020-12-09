@@ -11,6 +11,12 @@
         <basic-services />
         <van-divider content-position="left">超市订单</van-divider>
         <supermarket-services />
+        <van-cell-group>
+            <van-cell title="设置" :clickable="true" icon="setting-o"
+                :to="{ name: 'Setting' , query: { backurl: 'Self'}}" />
+            <van-cell title="关于我们" :clickable="true" icon="info-o" :to="{ name: 'About' , query: { backurl: 'Self'}}" />
+        </van-cell-group>
+
         <!-- footer start -->
         <label-box />
         <!-- footer end -->

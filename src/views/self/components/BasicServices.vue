@@ -32,7 +32,7 @@
                 }, {
                     image: '#icon-banshou',
                     title: '我的报修',
-                    link: ''
+                    link: '/Repair'
                 }, {
                     image: '#icon-building-automation',
                     title: '我的小区',

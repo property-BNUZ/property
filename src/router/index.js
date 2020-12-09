@@ -8,6 +8,7 @@ import Self from '../views/self/Self.vue'
 import Server from '../views/server/Server'
 import Notice from '../views/notice/Notice'
 import Express from '../views/express/index.vue'
+import Setting from '../views/self/setting/Setting'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -38,10 +39,14 @@ const routes = [{
     path: '/Notice',
     name: 'Notice',
     component: Notice
-},{
+}, {
     path: '/Express',
     name: 'Express',
     component: Express
+}, {
+    path: '/Self/Setting',
+    name: 'Setting',
+    component: Setting
 }, ]
 const router = new VueRouter({
     routes

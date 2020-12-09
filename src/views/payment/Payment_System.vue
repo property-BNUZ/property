@@ -9,7 +9,7 @@
       </template>
     </van-swipe-cell>
 
-    <el-table :data="tableDzata" border style="width: 100%">
+    <el-table :data="tableData" border style="width: 100%">
       <el-table-column fixed prop="date" label="日期" width="100">
       </el-table-column>
       <el-table-column prop="type" label="欠费类型" width="80">

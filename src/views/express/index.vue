@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <MyBlack :title = "title"></MyBlack>
+    <my-back :title="title"></my-back>
     <van-uploader :after-read="afterRead" v-model="fileList" />
     <div>
       <!-- 773068856629314 -->
       <a :href=" new_url ">
-        <van-button type="info" @click = "console">查询快递</van-button>
+        <van-button type="info" @click="console">查询快递</van-button>
       </a>
     </div>
   </div>
@@ -14,27 +14,27 @@
 
 
 <script>
-   var get_url = '';
+  var get_url = '';
   import Quagga from 'quagga'
   export default {
     name: 'Barcode',
     components: {},
-    
+
     data() {
       return {
-        set_url : '',
+        set_url: '',
         title: '快递代收',
         barcode: '',
         fileList: [],
       }
     },
     computed: {
-      new_url(){
+      new_url() {
         return 'http://www.kuaidi100.com/chaxun?com=shentong&nu=' + this.set_url;
-       }
-      },
+      }
+    },
     methods: {
-      console(){
+      console() {
         this.set_url = get_url;
         console.log(get_url);
       },
