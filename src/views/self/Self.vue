@@ -10,6 +10,7 @@
         <van-divider content-position="left">基础服务</van-divider>
         <basic-services />
         <van-divider content-position="left">超市订单</van-divider>
+        <supermarket-services />
         <!-- footer start -->
         <label-box />
         <!-- footer end -->
@@ -32,11 +33,13 @@
     import SelfHeader from '../../components/Header';
     import LabelBox from '../../components/LabelBox.vue';
     import BasicServices from '../self/components/BasicServices.vue';
+    import SupermarketServices from './components/SupermarketServices.vue';
     export default {
         components: {
             LabelBox,
             SelfHeader,
-            BasicServices
+            BasicServices,
+            SupermarketServices
         },
         data() {
             return {
