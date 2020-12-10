@@ -27,6 +27,7 @@
         },
         methods: {
             qrcodeScan() { //生成二维码
+            console.log(111)
                 let qrcode = new QRCode('qrcode', {
                     render: 'canvas', // 设置渲染方式（有两种方式 table和canvas，默认是canvas）  
                     background: '#f0f',

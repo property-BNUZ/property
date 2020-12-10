@@ -54,8 +54,8 @@
     </el-dialog>
     <van-share-sheet v-model="showShare" title="选择缴费方式" @select="onSelect" :options="options" />
 
-    <el-dialog title="提示" :visible.sync="dialogVisible_pay"  width="90%" >
-      <Mypay :masg = "money"></Mypay>
+    <el-dialog title="提示" :visible.sync="dialogVisible_pay" width="90%">
+      <Mypay :masg="money"></Mypay>
     </el-dialog>
   </div>
 
@@ -121,12 +121,10 @@
           this.type = row.type;
         }
       },
-      getmoneySum(){        
-        
-        for(var i = 0; i < this.tableData.length; i++){
-         this.tableData[this.tableData.length - 1].money  += this.tableData[i].money;
+      getmoneySum() {
+        for (var i = 0; i < this.tableData.length; i++) {
+          this.tableData[this.tableData.length - 1].money += this.tableData[i].money;
         }
-        
       }
 
     },
@@ -139,7 +137,7 @@
         percentage: 0,
         money: 0,
         showmap: 0,
-        moneySum: 0 ,
+        moneySum: 0,
         show: false,
         dialogVisible: false,
         dialogVisible_pay: false,
@@ -158,39 +156,40 @@
           },
         ],
         tableData: [{
-          date: '2016-05-02',
-          type: '天然气',
-          flag: 1,
-          city: '天然气',
-          money: -100
-        }, {
-          date: '2016-05-04',
-          type: '物业费',
-          flag: 0,
-          money: 500
-        }, {
-          date: '2016-05-01',
-          type: '水费',
-          flag: 0,
-          money: 100
-        }, {
-          date: '2016-05-01',
-          type: '宽带费',
-          flag: 1,
-          money: -300
-        },
-        {
-          date: '2016-05-03',
-          type: '电费',
-          flag: 1,
-          money: -900
-        },
-        {
-          date: '2016-05-01',
-          type: '合计',
-          flag: 1,
-          money: 0
-        },]
+            date: '2016-05-02',
+            type: '天然气',
+            flag: 1,
+            city: '天然气',
+            money: -100
+          }, {
+            date: '2016-05-04',
+            type: '物业费',
+            flag: 0,
+            money: 500
+          }, {
+            date: '2016-05-01',
+            type: '水费',
+            flag: 0,
+            money: 100
+          }, {
+            date: '2016-05-01',
+            type: '宽带费',
+            flag: 1,
+            money: -300
+          },
+          {
+            date: '2016-05-03',
+            type: '电费',
+            flag: 1,
+            money: -900
+          },
+          {
+            date: '2016-05-01',
+            type: '合计',
+            flag: 1,
+            money: 0
+          },
+        ]
       }
     },
 
@@ -199,7 +198,6 @@
 
 
 <style>
-
   .wrapper {
     display: flex;
     align-items: center;
