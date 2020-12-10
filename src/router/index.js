@@ -7,39 +7,53 @@ import Door from '../views/door/Door.vue'
 import Self from '../views/self/Self.vue'
 import Server from '../views/server/Server'
 import Notice from '../views/notice/Notice'
+import SignIn from '../views/SignIn/signIn.vue'
+import Register from '../views/register/Register.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
-    name: 'Home',
-    component: Home
+	path: '/SignIn',
+	name: 'SignIn',
+	component: SignIn
 }, {
-    path: '/Payment',
-    name: 'Payment',
-    component: Payment
+	path: '/Register',
+	name: 'Register',
+	component: Register
 }, {
-    path: '/Repair',
-    name: 'Repair',
-    component: Repair
+	path: '/',
+	name: 'Home',
+	component: Home
 }, {
-    path: '/Door',
-    name: 'Door',
-    component: Door
+	path: '/Payment',
+	name: 'Payment',
+	component: Payment
 }, {
-    path: '/Self',
-    name: 'Self',
-    component: Self
+	path: '/Repair',
+	name: 'Repair',
+	component: Repair
 }, {
-    path: '/Server',
-    name: 'Server',
-    component: Server
+	path: '/Door',
+	name: 'Door',
+	component: Door
 }, {
-    path: '/Notice',
-    name: 'Notice',
-    component: Notice
+	path: '/Self',
+	name: 'Self',
+	component: Self
+}, {
+	path: '/Server',
+	name: 'Server',
+	component: Server
+}, {
+	path: '/Notice',
+	name: 'Notice',
+	component: Notice
+}, {
+	path: '/SignIn',
+	name: 'SignIn',
+	component: SignIn
 }, ]
 const router = new VueRouter({
-    routes
+	routes
 })
 
 export default router
