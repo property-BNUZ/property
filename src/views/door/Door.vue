@@ -65,9 +65,9 @@
           />
       </div>
     </van-dialog>
-    <van-notify v-model="show" type="success">
+    <!-- <van-notify v-model="show" type="success">
       <van-icon name="bell" style="margin-right: 4px;" />
-    <span>已提交，请耐心等待管理员审核</span>
+    <span>已提交，请耐心等待管理员审核</span> -->
     </van-notify>
     <!-- 历史记录 -->
     <van-dialog v-model="showList" title="历史记录如下" show-cancel-button>
@@ -86,11 +86,18 @@
       请登录粤康码将14天内行程截图并提交
     </van-divider>
     <van-uploader v-model="fileList" multiple style="margin-left: 13px"/>
+    <!-- <van-dialog v-model="show" title="" show-cancel-button>
+      <DooJ></DooJ>
+    </van-dialog> -->
+     <el-dialog title="提示" :visible.sync="show"  width="90%" >
+       <doorJ></doorJ>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-  import DoorHeader from '../../components/Header.vue';
+  import DoorHeader from '../../components/Header';
+  import DoorJ from './components/doorJ';
   export default {
     computed: {
     text() {
