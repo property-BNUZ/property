@@ -1,22 +1,9 @@
 <template>
   <div class="home">
-<<<<<<< HEAD
-    <MyBlack :title="title"></MyBlack>
-    <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
-      选择拍照，或者上传照片，可识别快递单号
-    </van-divider>
-    <div class="express"  >
-      <van-uploader image-fit	 :after-read="afterRead" v-model="fileList" />
-      <van-uploader  capture="camera"   :after-read="afterRead" v-model="fileList"  style=" display: none; margin-left: 45%;"/>
-    </div>
-
-    <div class="check">
-=======
     <my-back :title="title"></my-back>
     <van-uploader :after-read="afterRead" v-model="fileList" />
     <div>
       <!-- 773068856629314 -->
->>>>>>> 42af77720f288dfb314fd91969deff53bf4e43ce
       <a :href=" new_url ">
         <van-button type="info" @click="console">查询快递</van-button>
       </a>
@@ -31,28 +18,15 @@
 
 <script>
   var get_url = '';
-<<<<<<< HEAD
-  var count= 0;
-=======
->>>>>>> 42af77720f288dfb314fd91969deff53bf4e43ce
   import Quagga from 'quagga'
   import MyList from './components/List.vue'
   export default {
     name: 'Barcode',
-<<<<<<< HEAD
-    components: {
-      MyList,
-    },
-    data() {
-      return {
-        set_url: '2222222222',
-=======
     components: {},
 
     data() {
       return {
         set_url: '',
->>>>>>> 42af77720f288dfb314fd91969deff53bf4e43ce
         title: '快递代收',
         barcode: '',
         fileList: [],
@@ -60,17 +34,9 @@
     },
     computed: {
       new_url() {
-<<<<<<< HEAD
-        console.log(this);
         return 'http://www.kuaidi100.com/chaxun?com=shentong&nu=' + this.set_url;
       }
     },
-
-=======
-        return 'http://www.kuaidi100.com/chaxun?com=shentong&nu=' + this.set_url;
-      }
-    },
->>>>>>> 42af77720f288dfb314fd91969deff53bf4e43ce
     methods: {
       console() {
         this.set_url = get_url;
@@ -106,9 +72,12 @@
             src: URL.createObjectURL(file)
           },
           function a(result) {
-            get_url = result.codeResult.code; 
-            
-            p.$refs.child.tableData.push({date : count++,number : get_url}) ;
+            get_url = result.codeResult.code;
+
+            p.$refs.child.tableData.push({
+              date: count++,
+              number: get_url
+            });
             console.log(get_url);
             return get_url;
           }
