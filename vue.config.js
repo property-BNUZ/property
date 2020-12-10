@@ -7,11 +7,20 @@ module.exports = {
     assetsDir: 'static',
     devServer: {
         disableHostCheck: true,
-        host: '0.0.0.0', // ip
+        host: '127.0.0.1', // ip
         port: 8080, // 设置端口号
         https: false, // https:{type:Boolean}
         open: false, //配置自动启动浏览器
-        proxy: null, //设置代理
+        proxy: {
+            '/api': {
+                target: 'http://127.0.0.1:8080',
+                changeOrigin: true, //允许跨域
+                ws: true,
+                pathRewrite: { //重写路径
+                    '^/api': '/mock'
+                }
+            }
+        }, //设置代理
         open: true,
     },
     // css: {
