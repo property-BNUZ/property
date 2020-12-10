@@ -170,7 +170,6 @@
         showmap : 0,
         show: false,
         dialogVisible: false,
-        showShare: false,
         options: [],
         tableData: [],
         show: false,
