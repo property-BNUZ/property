@@ -51,7 +51,7 @@
     <!-- <van-notify v-model="show" type="success">
       <van-icon name="bell" style="margin-right: 4px;" />
     <span>已提交，请耐心等待管理员审核</span> -->
-    </van-notify>
+    <!-- </van-notify> -->
     <!-- 历史记录 -->
     <van-dialog v-model="showList" title="历史记录如下" show-cancel-button>
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">

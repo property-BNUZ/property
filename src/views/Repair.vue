@@ -1,13 +1,14 @@
 <template>
     <div>
-        <page-header></page-header>
+        <repair-header />
         <record :tableData="recordTableData"></record>
     </div>
 </template>
 
 <script>
-    import axios from 'axios'
+    import RepairHeader from '@/components/repair/RepairHeader.vue'
     import Record from '@/components/repair/Record.vue'
+
     export default {
         data() {
             return {
@@ -15,6 +16,7 @@
             }
         },
         components: {
+            RepairHeader,
             Record
         },
         methods: {
@@ -22,10 +24,8 @@
                 axios.get('/api/repair.json').then(this.handleGetData);
             },
             handleGetData(res) {
-                const data = res.data.data;
-                console.log(res);
-                if (res.data.ret && data.tableData) {
-                    this.recordTableData = data.tableData;
+                if (res.status == 200) {
+                    this.recordTableData = res.data.repairRecord;
                 }
             },
         },

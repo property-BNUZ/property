@@ -1,66 +1,56 @@
 <template>
     <div>
-        <page-header :title="title" />
-        <van-row type="flex" justify="space-around">
-            <van-col span="1">
-                <van-image round width="5rem" height="5rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-            </van-col>
-            <van-col span="12">手机号：{{phoneNumber}}</van-col>
-        </van-row>
-        <van-divider content-position="left">基础服务</van-divider>
-        <basic-services />
-        <van-divider content-position="left">超市订单</van-divider>
-        <supermarket-services />
-        <van-cell-group>
-            <van-cell title="设置" :clickable="true" icon="setting-o"
-                :to="{ name: 'Setting' , query: { backurl: 'Self'}}" />
-            <van-cell title="关于我们" :clickable="true" icon="info-o" :to="{ name: 'About' , query: { backurl: 'Self'}}" />
-        </van-cell-group>
+        <page-header title="住户中心" />
 
-        <!-- footer start -->
+        <info-display :info="info" />
+
+        <van-divider content-position="left">基础服务</van-divider>
+        <base-service :icons="baseServiceIcons" />
+
+        <van-divider content-position="left">超市订单</van-divider>
+        <supermarket-service :icons="supermarketServiceIcons" />
+
+        <setting-and-about />
+
         <label-box />
-        <!-- footer end -->
     </div>
 </template>
 
 <script>
-    import Vue from 'vue';
-    import {
-        Divider
-    } from 'vant';
-    import {
-        Col,
-        Row
-    } from 'vant';
-
-    Vue.use(Col);
-    Vue.use(Row);
-    Vue.use(Divider);
-    import BasicServices from '@/components/self/BasicServices.vue';
-    import SupermarketServices from '@/components/self/SupermarketServices.vue';
+    import InfoDisplay from '@/components/self/InfoDisplayBox.vue';
+    import IconBox from '@/components/self/IconBox.vue';
+    import SettingAndAbout from '@/components/self/SettingAndAbout.vue';
     export default {
         components: {
-            BasicServices,
-            SupermarketServices
+            InfoDisplay,
+            BaseService: IconBox,
+            SupermarketService: IconBox,
+            SettingAndAbout
         },
         data() {
             return {
-                title: '住户中心',
-                phoneNumber: '13143664411'
+                baseServiceIcons: [],
+                supermarketServiceIcons: [],
+                info: {}
             }
+        },
+        methods: {
+            getDate() {
+                axios.get('/api/self.json').then(this.handleGetData);
+            },
+            handleGetData(res) {
+                if (res.status === 200) {
+                    this.baseServiceIcons = res.data.baseServiceIcons
+                    this.supermarketServiceIcons = res.data.supermarketServiceIcons
+                    this.info = res.data.info
+                }
+            }
+        },
+        mounted() {
+            this.getDate()
         }
     }
 </script>
 
 <style scoped>
-    .van-row {
-        align-items: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        background: url('~@/assets/background/sunset.jpg') no-repeat;
-    }
-
-    .van-col {
-        color: #fff
-    }
 </style>

@@ -64,7 +64,7 @@
             gotolink(icon) {
                 this.$router.push({
                     path: '/' + icon.link,
-                    query: {
+                    params: {
                         backurl: ''
                     }
                 })
