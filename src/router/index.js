@@ -11,59 +11,64 @@ import SignIn from '@/views/SignIn.vue'
 import Register from '@/views/Register.vue'
 import Express from '@/views/Express.vue'
 import Setting from '@/components/self/setting/Setting.vue'
+import Suggestion from '@/views/Suggestion.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-	path: '/',
-	name: 'Home',
-	component: Home
+    path: '/',
+    name: 'Home',
+    component: Home
 }, {
-	path: '/SignIn',
-	name: 'SignIn',
-	component: SignIn
+    path: '/SignIn',
+    name: 'SignIn',
+    component: SignIn
 }, {
-	path: '/Register',
-	name: 'Register',
-	component: Register
+    path: '/Register',
+    name: 'Register',
+    component: Register
 }, {
-	path: '/Payment',
-	name: 'Payment',
-	component: Payment
+    path: '/Payment',
+    name: 'Payment',
+    component: Payment
 }, {
-	path: '/Repair',
-	name: 'Repair',
-	component: Repair
+    path: '/Repair',
+    name: 'Repair',
+    component: Repair
 }, {
-	path: '/Door',
-	name: 'Door',
-	component: Door
+    path: '/Door',
+    name: 'Door',
+    component: Door
 }, {
-	path: '/Self',
-	name: 'Self',
-	component: Self
+    path: '/Self',
+    name: 'Self',
+    component: Self
 }, {
-	path: '/Server',
-	name: 'Server',
-	component: Server
+    path: '/Server',
+    name: 'Server',
+    component: Server
 }, {
-	path: '/Notice',
-	name: 'Notice',
-	component: Notice
+    path: '/Notice',
+    name: 'Notice',
+    component: Notice
 }, {
-	path: '/SignIn',
-	name: 'SignIn',
-	component: SignIn
+    path: '/SignIn',
+    name: 'SignIn',
+    component: SignIn
 }, {
-	path: '/Express',
-	name: 'Express',
-	component: Express
+    path: '/Express',
+    name: 'Express',
+    component: Express
 }, {
-	path: '/Self/Setting',
-	name: 'Setting',
-	component: Setting
+    path: '/Self/Setting',
+    name: 'Setting',
+    component: Setting
+}, {
+    path: '/Suggestion',
+    name: 'Suggestion',
+    component: Suggestion
 }, ]
 const router = new VueRouter({
-	routes
+    routes
 })
 
 export default router
