@@ -5,10 +5,12 @@
 </template>
 
 <script>
-    import LabelBox from '../../components/LabelBox';
     export default {
-        components: {
-            LabelBox,
+        components: {},
+        data() {
+            return {
+
+            }
         }
     }
 </script>
