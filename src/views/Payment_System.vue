@@ -1,6 +1,6 @@
 <template>
   <div>
-    <payment-header :title="title" :backurl='this.$route.query.backurl' />
+    <page-header :title="title" :backurl='this.$route.query.backurl' />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <van-swipe-cell>
       <van-card desc="住址：4栋1单元101" title="姓名：李爱国" thumb="https://img.yzcdn.cn/vant/cat.jpeg" />
@@ -65,15 +65,12 @@
 
 </script>
 <script>
-  import PaymentHeader from '../../components/Header.vue'
-  import Mypay from './components/pay.vue'
+  import Mypay from '@/components/payment/pay.vue'
   export default {
     props: {
       source: String
     },
-    components: {
-      PaymentHeader
-    },
+    components: {},
     computed: {
       text() {
         return this.currentRate.toFixed(0) + '%';

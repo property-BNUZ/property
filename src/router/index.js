@@ -1,19 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/home/Home.vue'
-import Repair from '../views/repair/Repair.vue'
-import Payment from '../views/payment/Payment_System.vue'
-import Door from '../views/door/Door.vue'
-import Self from '../views/self/Self.vue'
-import Server from '../views/server/Server'
-import Notice from '../views/notice/Notice'
-import SignIn from '../views/SignIn/signIn.vue'
-import Register from '../views/register/Register.vue'
-import Express from '../views/express/index.vue'
-import Setting from '../views/self/setting/Setting'
+import Home from '../views/Home.vue'
+import Repair from '@/views/Repair.vue'
+import Payment from '@/views/Payment_System.vue'
+import Door from '@/views/Door.vue'
+import Self from '@/views/Self.vue'
+import Server from '@/views/Server'
+import Notice from '@/views/Notice'
+import SignIn from '@/views/SignIn.vue'
+import Register from '@/views/Register.vue'
+import Express from '@/views/Express.vue'
+import Setting from '@/components/self/setting/Setting.vue'
 Vue.use(VueRouter)
 
 const routes = [{
+	path: '/',
+	name: 'Home',
+	component: Home
+}, {
 	path: '/SignIn',
 	name: 'SignIn',
 	component: SignIn
@@ -21,10 +25,6 @@ const routes = [{
 	path: '/Register',
 	name: 'Register',
 	component: Register
-}, {
-	path: '/',
-	name: 'Home',
-	component: Home
 }, {
 	path: '/Payment',
 	name: 'Payment',

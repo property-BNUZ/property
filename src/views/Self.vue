@@ -1,6 +1,6 @@
 <template>
     <div>
-        <self-header :title="title" />
+        <page-header :title="title" />
         <van-row type="flex" justify="space-around">
             <van-col span="1">
                 <van-image round width="5rem" height="5rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
@@ -36,14 +36,10 @@
     Vue.use(Col);
     Vue.use(Row);
     Vue.use(Divider);
-    import SelfHeader from '../../components/Header';
-    import LabelBox from '../../components/LabelBox.vue';
-    import BasicServices from '../self/components/BasicServices.vue';
-    import SupermarketServices from './components/SupermarketServices.vue';
+    import BasicServices from '@/components/self/BasicServices.vue';
+    import SupermarketServices from '@/components/self/SupermarketServices.vue';
     export default {
         components: {
-            LabelBox,
-            SelfHeader,
             BasicServices,
             SupermarketServices
         },

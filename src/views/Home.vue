@@ -7,7 +7,6 @@
     <!-- 功能 选择 start -->
     <icon-box></icon-box>
     <!-- 功能 选择 end -->
-
     <!-- footer start -->
     <label-box></label-box>
     <!-- footer end -->
@@ -17,14 +16,12 @@
 
 
 <script>
-  import HeaderSwipe from '../home/components/HeaderSwipe.vue';
-  import IconBox from '../home/components/IconBox.vue';
-  import LabelBox from '../../components/LabelBox.vue';
+  import HeaderSwipe from '@/components/home/HeaderSwipe.vue';
+  import IconBox from '@/components/home/IconBox.vue';
   export default {
     components: {
       HeaderSwipe,
       IconBox,
-      LabelBox,
     },
     data() {
       return {

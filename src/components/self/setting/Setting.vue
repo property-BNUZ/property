@@ -1,6 +1,6 @@
 <template>
     <div>
-        <my-back title="设置" :backurl="this.$route.query.backurl" />
+        <page-header title="设置" :backurl="this.$route.query.backurl" />
         <van-cell-group>
             <van-cell title="头像" is-link :clickable="true" @click="cellClick">
                 <van-image width="40px" height="40px" src="https://img.yzcdn.cn/vant/cat.jpeg" />

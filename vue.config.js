@@ -2,8 +2,8 @@
 // const vantTheme = path.resolve(__dirname, "./src/styles/theme.less")
 
 module.exports = {
-    publicPath: './',
-    outputDir: 'dist',
+    publicPath: '',
+    outputDir: 'property',
     assetsDir: 'static',
     devServer: {
         disableHostCheck: true,

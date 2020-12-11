@@ -1,14 +1,13 @@
 <template>
     <div>
-        <repair-header></repair-header>
+        <page-header></page-header>
         <record :tableData="recordTableData"></record>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
-    import RepairHeader from '../repair/components/Header.vue'
-    import Record from './components/Record.vue'
+    import Record from '@/components/repair/Record.vue'
     export default {
         data() {
             return {
@@ -16,7 +15,6 @@
             }
         },
         components: {
-            RepairHeader,
             Record
         },
         methods: {
