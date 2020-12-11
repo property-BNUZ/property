@@ -55,7 +55,8 @@
                     {
                         id: "008",
                         imgUrl: require('@/assets/icon/advice.png'),
-                        desc: "意见建议"
+                        desc: "意见建议",
+                        link: 'Suggestion'
                     },
                 ],
             }
@@ -64,7 +65,7 @@
             gotolink(icon) {
                 this.$router.push({
                     path: '/' + icon.link,
-                    query: {
+                    params: {
                         backurl: ''
                     }
                 })

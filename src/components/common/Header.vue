@@ -18,16 +18,11 @@
                 type: String,
                 required: false,
                 default: ""
-            },
-            backurl: {
-                type: String,
-                required: false,
-                default: ""
             }
         },
         methods: {
             onClickLeft() {
-                this.$router.replace('/' + this.backurl)
+                this.$router.go(-1)
             }
         },
     }
