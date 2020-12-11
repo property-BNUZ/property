@@ -9,7 +9,7 @@ import doorJ from './views/door/components/doorJ.vue'
 import './styles/iconfont/iconfont.js'
 import MyBack from './components/Header.vue'
 import Vant from 'vant';
-
+import Mock from '@/mock/index.js'
 import 'vant/lib/index.css';
 
 Vue.use(Vant);
