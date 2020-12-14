@@ -26,6 +26,7 @@
     components: {
       Quagga,
       MyList,
+      
     },
 
     data() {
