@@ -51,10 +51,6 @@ const routes = [{
     name: 'Notice',
     component: Notice
 }, {
-    path: '/SignIn',
-    name: 'SignIn',
-    component: SignIn
-}, {
     path: '/Express',
     name: 'Express',
     component: Express

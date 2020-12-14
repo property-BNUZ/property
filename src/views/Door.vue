@@ -42,10 +42,10 @@
     <!-- 弹窗缴费 -->
     <van-dialog v-model="dialogVisible" title="请如实填写一下信息" show-cancel-button @confirm="change">
       <div style="padding: 30px">
-        <van-field name="姓名" label="姓名" placeholder="请填真实姓名" />
-        <van-field name="性别" label="性别" placeholder="请填性别" />
-        <van-field name="手机号" label="手机号" placeholder="请填真实手机号" />
-        <van-field name="身份证号码" label="身份证号码" placeholder="请填写完整的身份证号码" />
+        <van-field name="姓名" label="姓名" v-model="state.name" placeholder="请填真实姓名" />
+        <van-field name="性别" label="性别" v-model="state.sex"  placeholder="请填性别" />
+        <van-field name="手机号" label="手机号" v-model="state.num"  placeholder="请填真实手机号" />
+        <van-field name="身份证号码" label="身份证号码" v-model="state.idCard"  placeholder="请填写完整的身份证号码" />
       </div>
     </van-dialog>
     <!-- <van-notify v-model="show" type="success">
@@ -83,36 +83,9 @@
       },
     },
     methods: {
-      getNowFormatDate() {
-        var date = new Date();
-        var seperator1 = "-";
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var strDate = date.getDate();
-        if (month >= 1 && month <= 9) {
-          month = "0" + month;
-        }
-        if (strDate >= 0 && strDate <= 9) {
-          strDate = "0" + strDate;
-        }
-        var currentdate = year + seperator1 + month + seperator1 + strDate;
-        return currentdate;
-      },
-      Close() {
-        this.showmap = 0;
-      },
-      handleClick(row, flg) {
-        if (flg) {
-          this.money = row.money * 100 * -1;
-          this.time = this.getNowFormatDate();
-          console.log(this.time);
-        } else {
-          this.money = row.money * 100 * 1;
-          this.showmap = 1;
-          this.percentage = this.money / 1000;
-          this.type = row.type;
-        }
-      },
+      // Close() {
+      //   this.showmap = 0;
+      // },
       change() {
         this.show = true;
       },
@@ -122,18 +95,21 @@
       onLoad() {
         // 异步更新数据
         // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-        setTimeout(() => {
-          for (let i = 0; i < 10; i++) {
-            this.list.push(this.list.length + 1);
-          }
+         setTimeout(() => {
+          if(this.listm.length == 0){
+              this.list.push('暂无历史记录');
+            }
+            else{
+              for (let i = 0; i < this.listm.length; i++) {
+                this.list.push(this.listm[i]);
+                }
+            }
 
           // 加载状态结束
           this.loading = false;
 
           // 数据全部加载完成
-          if (this.list.length >= 10) {
-            this.finished = true;
-          }
+          this.finished = true;
         }, 1000);
       },
     },
@@ -144,8 +120,7 @@
         time: 0,
         currentRate: 0,
         percentage: 0,
-        money: 0,
-        showmap: 0,
+        // showmap: 0,
         show: false,
         dialogVisible: false,
         options: [],
@@ -161,6 +136,13 @@
           // Uploader 根据文件后缀来判断是否为图片文件
           // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
         ],
+        listm: [1,1,1],
+        state: {
+          name: '',
+          sex: '',
+          num: '',
+          idCard: '',
+        }
       }
     },
   }

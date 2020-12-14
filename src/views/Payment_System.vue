@@ -30,7 +30,6 @@
             size="small">缴费</el-button>
           <el-button v-if="scope.row.flag == 0" @click="handleClick (scope.row,0); dialogVisible = true " type="text"
             size="small">余额</el-button>
-
         </template>
       </el-table-column>
     </el-table>
@@ -57,6 +56,8 @@
     <el-dialog title="提示" :visible.sync="dialogVisible_pay" width="90%">
       <Mypay :masg="money"></Mypay>
     </el-dialog>
+    <button @click="testReq">测试请求</button>
+
   </div>
 
 </template>
@@ -78,6 +79,7 @@
     },
     mounted() {
       this.getmoneySum();
+      
       this.tableData[this.tableData.length - 1].date = this.getNowFormatDate();;
     },
     methods: {
@@ -122,7 +124,16 @@
         for (var i = 0; i < this.tableData.length; i++) {
           this.tableData[this.tableData.length - 1].money += this.tableData[i].money;
         }
+      },
+      testReq: function () {
+        axios.get('/api/test.json').then((res) => {
+          console.log(res)
+        }).catch((err) => {
+          console.log(err)
+        })
       }
+
+
 
     },
 
