@@ -30,7 +30,6 @@
             size="small">缴费</el-button>
           <el-button v-if="scope.row.flag == 0" @click="handleClick (scope.row,0); dialogVisible = true " type="text"
             size="small">余额</el-button>
-
         </template>
       </el-table-column>
     </el-table>

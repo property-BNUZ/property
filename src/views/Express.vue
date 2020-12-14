@@ -19,9 +19,14 @@
 <script>
   var get_url = '';
   import Quagga from 'quagga'
+  import MyList from '@/components/express/List.vue'
+  var count= 0;
   export default {
     name: 'Barcode',
-    components: {},
+    components: {
+      Quagga,
+      MyList,
+    },
 
     data() {
       return {
