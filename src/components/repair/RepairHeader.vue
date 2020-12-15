@@ -2,6 +2,7 @@
     <div>
         <van-nav-bar title="报修" left-text="返回" right-text="新建" left-arrow @click-left="onClickLeft"
             @click-right="onClickRight" />
+        <van-popup v-model="show" position="right" :style="{ height: '100%', width: '100%' }" />
     </div>
 </template>
 
@@ -17,13 +18,20 @@
     Vue.use(NavBar);
 
     export default {
+        data() {
+            return {
+                show: false
+            }
+        },
         methods: {
 
             onClickLeft() {
-                this.$router.replace('/')
+                this.$router.go(-1)
             },
             onClickRight() {
-                Toast('按钮');
+                this.$router.push({
+                    path: '/Repair/new'
+                })
             },
         },
     }

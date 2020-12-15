@@ -12,6 +12,7 @@ import Register from '@/views/Register.vue'
 import Express from '@/views/Express.vue'
 import Setting from '@/components/self/setting/Setting.vue'
 import Suggestion from '@/views/Suggestion.vue'
+import RepairNew from '@/components/repair/RepairNew'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -34,6 +35,9 @@ const routes = [{
     path: '/Repair',
     name: 'Repair',
     component: Repair
+}, {
+    path: '/Repair/new',
+    component: RepairNew
 }, {
     path: '/Door',
     name: 'Door',
