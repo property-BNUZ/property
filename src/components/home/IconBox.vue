@@ -1,7 +1,9 @@
 <template>
     <van-grid :border="false" :column-num="4">
         <van-grid-item v-for="(icon, index) in icons" :key="index" @click="gotolink(icon)">
-            <van-image :src="icon.imgUrl" />
+            <svg class="icon" aria-hidden="true">
+            <use :xlink:href="icon.img"></use>
+            </svg>
             <p>{{icon.desc}}</p>
         </van-grid-item>
     </van-grid>
@@ -13,48 +15,48 @@
             return {
                 icons: [{
                         id: "001",
-                        imgUrl: require('@/assets/icon/note.png'),
+                        img: "#icon-gonggao",
                         desc: "小区公告",
                         link: ''
                     },
                     {
                         id: "002",
-                        imgUrl: require('@/assets/icon/repair.png'),
+                        img: "#icon-baoshibaoxiu",
                         desc: "小区维修",
                         link: 'Repair'
                     },
                     {
                         id: "003",
-                        imgUrl: require('@/assets/icon/pay.png'),
+                        img: "#icon-pay",
                         desc: "生活缴费",
                         link: 'Payment'
                     },
                     {
                         id: "004",
-                        imgUrl: require('@/assets/icon/door.png'),
+                        img: "#icon-baoshibaoxiu",
                         desc: "手机开门",
                         link: 'Door'
                     },
                     {
                         id: "005",
-                        imgUrl: require('@/assets/icon/package.png'),
+                        img: "#icon-kuaididaishou",
                         desc: "快递代收",
                         link: 'express'
                     },
                     {
                         id: "006",
-                        imgUrl: require('@/assets/icon/car.png'),
+                        img: "#icon-gouwuche",
                         desc: "生活超市",
                         link: ''
                     },
                     {
                         id: "007",
-                        imgUrl: require('@/assets/icon/service.png'),
+                        img: "#icon--fen-",
                         desc: "小区家政"
                     },
                     {
                         id: "008",
-                        imgUrl: require('@/assets/icon/advice.png'),
+                        img: "#icon-yijian",
                         desc: "意见建议",
                         link: 'Suggestion'
                     },
@@ -77,14 +79,12 @@
 </script>
 
 <style scoped>
-    .van-grid-item .van-image {
-        height: 40px;
-        width: 40px;
-        color: #646566;
-    }
 
-    .van-grid-item p {
-        font-size: 10px;
-        color: #646566;
+    .icon {
+        width: 40px;
+        height: 40px;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
     }
 </style>
