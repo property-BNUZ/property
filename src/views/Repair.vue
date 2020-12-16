@@ -22,6 +22,7 @@
         methods: {
             getDate() {
                 axios.get('/api/repair.json').then(this.handleGetData);
+                console.log(111);
             },
             handleGetData(res) {
                 if (res.status == 200) {
