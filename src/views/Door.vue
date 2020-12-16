@@ -48,9 +48,6 @@
         <van-field name="身份证号码" label="身份证号码" v-model="state.idCard"  placeholder="请填写完整的身份证号码" />
       </div>
     </van-dialog>
-    <!-- <van-notify v-model="show" type="success">
-      <van-icon name="bell" style="margin-right: 4px;" />
-    <span>已提交，请耐心等待管理员审核</span> -->
     <!-- </van-notify> -->
     <!-- 历史记录 -->
     <van-dialog v-model="showList" title="历史记录如下" show-cancel-button>
@@ -83,15 +80,17 @@
       },
     },
     methods: {
-      // Close() {
-      //   this.showmap = 0;
-      // },
+      getDate() {
+                axios.get('/api/door.json').then(this.handleGetData);
+            },
+            handleGetData(res) {
+                if (res.status == 200) {
+                    this.listm = res.data.DoorRecord;
+                }
+            },
       change() {
         this.show = true;
       },
-      // submite() {
-      //   this.show = false;
-      // },
       onLoad() {
         // 异步更新数据
         // setTimeout 仅做示例，真实场景中一般为 ajax 请求
@@ -113,14 +112,15 @@
         }, 1000);
       },
     },
-
+      mounted() {
+            this.getDate();
+          },
     data() {
       return {
-        title: '手机开门',
+        title: '智能门禁',
         time: 0,
         currentRate: 0,
         percentage: 0,
-        // showmap: 0,
         show: false,
         dialogVisible: false,
         options: [],
@@ -136,7 +136,7 @@
           // Uploader 根据文件后缀来判断是否为图片文件
           // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
         ],
-        listm: [1,1,1],
+        listm: [],
         state: {
           name: '',
           sex: '',

@@ -36,7 +36,7 @@
   show-word-limit
 />
 <div style="margin: 16px; color: #1989fa;" color="#1989fa">
-    <van-button round block type="primary" native-type="submit">
+    <van-button round block type="primary" native-type="submit" @click="submit">
       匿名提交
     </van-button>
   </div>
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant';
   export default {
     components: {
       
@@ -64,6 +65,13 @@
       },
     },
     methods: {
+      submit() {
+        this.$dialog.alert({
+           message: '感谢您的反馈，祝您生活愉快！',
+            }).then(() => {
+          });
+        this.message = '';
+      },
       onLoad() {
         // 异步更新数据
         // setTimeout 仅做示例，真实场景中一般为 ajax 请求
@@ -87,7 +95,6 @@
 
       sold() {
         this.show = false;
-        this.Toast('提示内容');
       },
       handleClick(row, flg) {
         if (flg) {
