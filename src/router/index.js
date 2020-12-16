@@ -13,6 +13,7 @@ import Express from '@/views/Express.vue'
 import Setting from '@/components/self/setting/Setting.vue'
 import Suggestion from '@/views/Suggestion.vue'
 import RepairNew from '@/components/repair/RepairNew'
+import CommunityActivity from '@/views/CommunityActivity'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -66,6 +67,10 @@ const routes = [{
     path: '/Suggestion',
     name: 'Suggestion',
     component: Suggestion
+}, {
+    path: '/CommunityActivity',
+    name: 'CommunityActivity',
+    component: CommunityActivity
 }, ]
 const router = new VueRouter({
     routes

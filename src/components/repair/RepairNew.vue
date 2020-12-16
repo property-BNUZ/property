@@ -2,13 +2,13 @@
     <div>
         <page-header title="新建报修" />
         <van-form @submit="onSubmit">
-            <van-field v-model="address" name="address" label="单元楼及房号" placeholder="单元楼及房号"
+            <van-field v-model="repairRecord.address" name="address" label="单元楼及房号" placeholder="单元楼及房号"
                 :rules="[{ required: false, message: '请填写单元楼及房号' }]" />
-            <van-field v-model="details" rows="5" name="details" autosize label="详情" type="textarea" maxlength="100"
-                placeholder="请输入报修详情" show-word-limit />
-            <van-field v-model="contact_person" name="contact_person" label="联系人" placeholder="联系人"
+            <van-field v-model="repairRecord.details" rows="5" name="details" autosize label="详情" type="textarea"
+                maxlength="100" placeholder="请输入报修详情" show-word-limit />
+            <van-field v-model="repairRecord.contactPerson" name="contactPerson" label="联系人" placeholder="联系人"
                 :rules="[{ required: true, message: '请填写联系人' }]" />
-            <van-field v-model="phone_number" name="phone_number" label="手机号" placeholder="手机号"
+            <van-field v-model="repairRecord.phoneNumber" name="phoneNumber" label="手机号" placeholder="手机号"
                 :rules="[{ required: true, message: '请填写手机号' }]" />
             <div style="margin: 16px;">
                 <van-button round block type="info" native-type="submit">
@@ -24,18 +24,27 @@
     export default {
         data() {
             return {
-                address: '',
-                details: '',
-                contact_person: '',
-                phone_number: '',
+                repairRecord: {
+                    id: '',
+                    address: '',
+                    details: '',
+                    contactPerson: '',
+                    date: '',
+                    phoneNumber: '',
+                    status: 0
+                }
             };
         },
         methods: {
             onSubmit(values) {
-                axios.post('/api/repair', values).then(res => {
+                let nowData = new Date();
+                let value =
+                    nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
+                this.repairRecord.date = value;
+                axios.post('http://121.196.105.252:8000/repair', this.repairRecord).then(res => {
                     console.log(res);
                 });
-                console.log('submit', values);
+                console.log('submit', this.repairRecord);
             },
         },
     }

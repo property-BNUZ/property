@@ -2,7 +2,7 @@
     <el-table :data="tableData" border style="width: 100%">
         <el-table-column fixed prop="date" label="日期" width="110">
         </el-table-column>
-        <el-table-column prop="name" label="姓名" width="80">
+        <el-table-column prop="contactPerson" label="姓名" width="80">
         </el-table-column>
         <el-table-column prop="status" label="状态" width="120">
         </el-table-column>
@@ -28,6 +28,6 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>

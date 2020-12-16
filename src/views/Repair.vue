@@ -21,11 +21,13 @@
         },
         methods: {
             getDate() {
-                axios.get('/api/repair.json').then(this.handleGetData);
+                axios.get('http://121.196.105.252:8000/repairs').then(this.handleGetData);
             },
             handleGetData(res) {
+                console.log(res);
                 if (res.status == 200) {
-                    this.recordTableData = res.data.repairRecord;
+                    console.log(res.data);
+                    this.recordTableData = res.data;
                 }
             },
         },

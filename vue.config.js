@@ -17,7 +17,7 @@ module.exports = {
                 changeOrigin: true, //允许跨域
                 ws: true,
                 pathRewrite: { //重写路径
-                    '^/api': '/mock'
+                    '^/api': ''
                 }
             }
         }, //设置代理

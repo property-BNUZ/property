@@ -29,8 +29,45 @@
         },
         data() {
             return {
-                baseServiceIcons: [],
-                supermarketServiceIcons: [],
+                baseServiceIcons: [{
+                    image: '#icon-shouye-copy',
+                    title: '我的房屋',
+                    link: ''
+                }, {
+                    image: '#icon-zhangdan',
+                    title: '我的账单',
+                    link: '/Payment'
+                }, {
+                    image: '#icon-banshou',
+                    title: '我的报修',
+                    link: '/Repair'
+                }, {
+                    image: '#icon-building-automation',
+                    title: '我的小区',
+                    link: ''
+                }],
+                supermarketServiceIcons: [{
+                    title: '待付款',
+                    image: '#icon-31daifukuan',
+                    num: 0,
+                    link: ''
+                }, {
+                    title: '待发货',
+                    image: '#icon-31daifahuo',
+                    num: 1,
+                    link: ''
+
+                }, {
+                    title: '待收货',
+                    image: '#icon-31daishouhuo',
+                    num: 1,
+                    link: ''
+                }, {
+                    title: '待评价',
+                    image: '#icon-31daipingjia',
+                    num: 1,
+                    link: ''
+                }],
                 info: {}
             }
         },
@@ -40,8 +77,6 @@
             },
             handleGetData(res) {
                 if (res.status === 200) {
-                    this.baseServiceIcons = res.data.baseServiceIcons
-                    this.supermarketServiceIcons = res.data.supermarketServiceIcons
                     this.info = res.data.info
                 }
             }
