@@ -69,34 +69,34 @@
 				console.log('submit', values);
 			},
 			onConfirm(value, index) {
-				console.log(index, values);
+				console.log(values);
 			},
 			onChange(picker, value, index) {
-				console.log(picker, index, values);
+				console.log(values);
 			},
 			onCancel() {
-
+				
 			},
 			// 校验函数返回 true 表示校验通过，false 表示不通过
 			validator1(val) {
-
-				return /^\S/.test(val);
+			     return /^\S/.test(val);
 			},
 			validator2(val) {
-				return /^\S/.test(val);
+			     return /^\S/.test(val);
 			},
-			//传递用户名，密码，小区等信息给服务器,signMessage是发送给服务器数据，isMsg是服务器返回数据，判定是否注册成功
+			//传递用户名，密码，小区等信息给服务器,signMessage是发送给服务器数据，isMsg是判断数据
 			setmessage() {
-				axios.get('http://121.196.105.252:8000/repairs', this.signMessage).this(isMsg =>{
-					if(isSignMessane){
-						this.$router.replace({
-							path: '/SignIn'
-						});
-					}
-					else{
-						alert('注册失败');
-					}
-					})
+				 axios.get('http://121.196.105.252:8000/repairs', this.signMessage).then(isMsg => {
+						if(isMsg){
+							this.$router.replace({
+								path: '/SignIn'
+							});
+						}
+						else{
+							alert('用户名或密码错误');
+						}
+			
+				 })
 			}
 		},
 	}

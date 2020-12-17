@@ -67,10 +67,10 @@
 				console.log('submit', values);
 			},
 			onConfirm(value, index) {
-				console.log(index, values);
+				console.log(values);
 			},
 			onChange(picker, value, index) {
-				console.log(picker,index, values);
+				console.log(values);
 			},
 			onCancel() {
 				
