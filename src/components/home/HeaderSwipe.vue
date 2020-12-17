@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div style="background-color: #fab90a;line-height: 50px;padding-left: 150px;color: white;">
+            物业管理
+        </div>
         <!-- banner 轮播 start -->
         <el-carousel height="200px">
             <el-carousel-item v-for="pic in pics" :key="pic.url">

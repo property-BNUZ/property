@@ -40,7 +40,7 @@
       </template>
     </van-panel>
     <!-- 弹窗缴费 -->
-    <van-dialog v-model="dialogVisible" title="请如实填写一下信息" show-cancel-button @confirm="change">
+    <van-dialog v-model="dialogVisible" title="请如实填写一下信息" show-cancel-button @confirm="submit">
       <div style="padding: 30px">
         <van-field name="姓名" label="姓名" v-model="state.name" placeholder="请填真实姓名" />
         <van-field name="性别" label="性别" v-model="state.sex"  placeholder="请填性别" />
@@ -52,7 +52,10 @@
     <!-- 历史记录 -->
     <van-dialog v-model="showList" title="历史记录如下" show-cancel-button>
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-        <van-cell v-for="item in list" :key="item" :title="item" />
+        <van-cell v-for="item in list" :key="item" >
+          <div>{{item.date}}</div>
+          <div>{{item.name}}</div>
+        </van-cell>
       </van-list>
     </van-dialog>
     <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
@@ -80,29 +83,46 @@
       },
     },
     methods: {
-      getDate() {
-                axios.get('/api/door.json').then(this.handleGetData);
+      getData() {
+                let nowData = new Date();
+                let value =
+                    nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
+                
+                axios.get('/mock/door.json').then(res => {
+                    console.log(res.data);
+                    // for(let i=0;i<res.data.length;i++){
+                    //   this.listm[i] = res.data[i];
+                    // }
+                    this.list = res.data;
+                });
             },
-            handleGetData(res) {
-                if (res.status == 200) {
-                    this.listm = res.data.DoorRecord;
-                }
+             submit(values) {
+                let nowData = new Date();
+                let value =
+                    nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
+                this.state.date = value;
+                axios.post('/mock/door.json',this.state).then(res => {
+                    console.log(res.data);
+                });
+                console.log('submit',this.state);
+                this.show = true;
             },
-      change() {
-        this.show = true;
-      },
+
+      // change() {
+      //   this.show = true;
+      // },
       onLoad() {
         // 异步更新数据
         // setTimeout 仅做示例，真实场景中一般为 ajax 请求
          setTimeout(() => {
-          if(this.listm.length == 0){
-              this.list.push('暂无历史记录');
-            }
-            else{
-              for (let i = 0; i < this.listm.length; i++) {
-                this.list.push(this.listm[i]);
-                }
-            }
+          // if(this.list.length == 0){
+          //     this.list.push('暂无历史记录');
+          //   }
+            // else{
+            //   for (let i = 0; i < this.listm.length; i++) {
+            //     this.list.push(this.listm[i]);
+            //     }
+            // }
 
           // 加载状态结束
           this.loading = false;
@@ -113,7 +133,7 @@
       },
     },
       mounted() {
-            this.getDate();
+            this.getData();
           },
     data() {
       return {
@@ -138,6 +158,7 @@
         ],
         listm: [],
         state: {
+          date:'',
           name: '',
           sex: '',
           num: '',
