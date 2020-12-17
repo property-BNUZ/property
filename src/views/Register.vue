@@ -17,7 +17,7 @@
 		</div>
 		<van-field v-model="where2" name="具体住址" label="具体住址" />
 
-		<div style="margin: 16px;" @click="remove">
+		<div style="margin: 16px;" @click="setmessage">
 			<van-button round block type="info" native-type="submit">
 				注册
 			</van-button>
