@@ -77,8 +77,6 @@
         methods: {
             getDate(username) {
                 // console.log(this.$util.getUserInfo());
-                console.log(this.$util.getUser());
-                console.log(this.$util.getUserInfo());
                 if (this.$util.getUserInfo() != null && this.$util.getUserInfo().user.username == this.$util.getUser()
                     .username) {
                     this.info = this.$util.getUserInfo();
@@ -88,7 +86,6 @@
                     if (res.status == 200) {
                         this.info = res.data;
                         let temp = res.data;
-                        console.log(temp);
                         const userInfo = JSON.stringify(temp);
                         window.sessionStorage.setItem('userInfo', userInfo);
                         // console.log(this.info);

@@ -93,16 +93,27 @@
 				console.log(this.signMessage);
 				axios.post('http://121.196.105.252:8000/login', this.signMessage).then(isSignMessane => {
 					if (isSignMessane.status == 200) {
-						console.log(isSignMessane);
 						if (isSignMessane.data == true) {
-							var temp = {
-								username: this.signMessage.username
-							};
-							const user = JSON.stringify(temp);
-							window.sessionStorage.setItem('user', user);
-							this.$router.replace({
-								path: '/Self'
-							});
+							axios.post('http://121.196.105.252:8000/getUserInfo/' + this.signMessage.username)
+								.then(res => {
+									if (res.status == 200) {
+										console.log(res);
+										this.info = res.data;
+										let temp = res.data;
+										console.log(temp);
+										const userInfo = JSON.stringify(temp);
+										window.sessionStorage.setItem('userInfo', userInfo);
+										temp = {
+											username: this.signMessage.username,
+											id: res.data.user.id
+										};
+										const user = JSON.stringify(temp);
+										window.sessionStorage.setItem('user', user);
+									}
+									this.$router.replace({
+										path: '/Self'
+									});
+								});
 						} else {
 							alert('用户名或密码错误');
 						}
