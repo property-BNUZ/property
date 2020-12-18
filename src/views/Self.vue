@@ -76,21 +76,19 @@
         },
         methods: {
             getDate(username) {
-                console.log(this.$util.getUserInfo().username);
-                console.log(this.$util.getUser()
-                    .username);
-                console.log(this.$util.getUserInfo().username == this.$util.getUser()
-                    .username);
-                if (this.$util.getUserInfo() != null && this.$util.getUserInfo().username == this.$util.getUser()
+                // console.log(this.$util.getUserInfo());
+                console.log(this.$util.getUser());
+                console.log(this.$util.getUserInfo());
+                if (this.$util.getUserInfo() != null && this.$util.getUserInfo().user.username == this.$util.getUser()
                     .username) {
                     this.info = this.$util.getUserInfo();
                     return;
                 }
                 axios.post('http://121.196.105.252:8000/getUserInfo/' + username).then(res => {
                     if (res.status == 200) {
-
                         this.info = res.data;
                         let temp = res.data;
+                        console.log(temp);
                         const userInfo = JSON.stringify(temp);
                         window.sessionStorage.setItem('userInfo', userInfo);
                         // console.log(this.info);
@@ -104,9 +102,10 @@
                 this.login = false;
             } else {
                 this.login = true;
+            }
+            if (user != null) {
                 this.getDate(user.username);
             }
-            // console.log(userInfo);
         }
     }
 </script>

@@ -2,9 +2,10 @@
     <div>
         <van-row type="flex" justify="space-around" @click="toLogin">
             <van-col span="1">
-                <van-image round width="5rem" height="5rem" :src="'data:image;base64,' + info.image" />
+                <van-image round width="5rem" height="5rem"
+                    :src="info.image == null ? '' : ('data:image;base64,' + info.image)" />
             </van-col>
-            <van-col span="12" v-if="login">手机号：{{info.user.phoneNumber}}</van-col>
+            <van-col span="12" v-if="login">手机号：{{info.user == null ? "" : info.user.phoneNumber}}</van-col>
             <van-col span="12" v-if="!login">请点击登录</van-col>
         </van-row>
     </div>
@@ -29,7 +30,12 @@
             }
         },
         mounted() {
+            console.log(this.info);
             console.log(this.$util.getUser() == null);
+        },
+        updated() {
+            console.log(this.info);
+
         }
     }
 </script>
