@@ -14,6 +14,7 @@ import Setting from '@/components/self/setting/Setting.vue'
 import Suggestion from '@/views/Suggestion.vue'
 import RepairNew from '@/components/repair/RepairNew'
 import CommunityActivity from '@/views/CommunityActivity'
+import Market from '@/views/supermarket/index'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -71,6 +72,10 @@ const routes = [{
     path: '/CommunityActivity',
     name: 'CommunityActivity',
     component: CommunityActivity
+}, {
+    path: '/Market',
+    name: 'Market',
+    component: Market
 }, ]
 const router = new VueRouter({
     routes

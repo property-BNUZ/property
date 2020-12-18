@@ -56,32 +56,43 @@
     <el-dialog title="提示" :visible.sync="dialogVisible_pay" width="90%">
       <Mypay :masg="money"></Mypay>
     </el-dialog>
-    <button @click="testReq">测试请求</button>
-
   </div>
 
 </template>
-<script>
 
-
-</script>
 <script>
   import Mypay from '@/components/payment/pay.vue'
   export default {
     props: {
       source: String
     },
-    components: {},
+    components: {
+      Mypay
+    },
     computed: {
       text() {
         return this.currentRate.toFixed(0) + '%';
       },
     },
-    mounted() {
-      this.getmoneySum();
-      
-      this.tableData[this.tableData.length - 1].date = this.getNowFormatDate();;
+    created() {
+      //在页面加载时读取sessionStorage里的状态信息
+      if (sessionStorage.getItem("store")) {
+        this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(sessionStorage.getItem("store"))))
+      }
+
+      //在页面刷新时将vuex里的信息保存到sessionStorage里
+      window.addEventListener("beforeunload", () => {
+        sessionStorage.setItem("store", JSON.stringify(this.$store.state))
+      })
     },
+    mounted() {
+      this.testReq();
+      this.tableData[this.tableData.length - 1].date = this.getNowFormatDate();
+    },
+    // beforeUpdate(){
+    //   this.getmoneySum();   
+    //   console.log("********");
+    // },
     methods: {
       onSelect(option) {
         // dialogVisible1 = true;
@@ -121,20 +132,53 @@
         }
       },
       getmoneySum() {
-        for (var i = 0; i < this.tableData.length; i++) {
-          this.tableData[this.tableData.length - 1].money += this.tableData[i].money;
+        for (var i = 0; i < this.tableData.length - 1; i++) {
+          console.log(this.tableData[i].money);
+          if (this.tableData[i].money < 0) {
+            this.tableData[this.tableData.length - 1].money += this.tableData[i].money;
+          }
         }
       },
-      testReq: function () {
-        axios.get('/api/test.json').then((res) => {
-          console.log(res)
-        }).catch((err) => {
-          console.log(err)
-        })
+      testReq() {
+        // var that = this
+        if (this.$store.state.list.length === 0) {
+          axios.post('/api/test').then((res) => {
+            console.log(res)
+            for (let i = 0; i < 5; i++) {
+              let temp;
+              console.log("**" + res.data.list[i].price);
+              if (res.data.list[i].price > 0) {
+                temp = 0
+              } else {
+                temp = 1
+              }
+              this.$store.state.list.push({
+                time: res.data.list[i].date,
+                price: res.data.list[i].price,
+                flg: temp
+              })
+            }
+            for (let i = 0; i < 5; i++) {
+              this.tableData[i].date = this.$store.state.list[i].time
+              this.tableData[i].money = this.$store.state.list[i].price
+              this.tableData[i].flag = this.$store.state.list[i].flg
+            }
+            console.log(this.tableData);
+            this.getmoneySum();
+
+          }).catch((err) => {
+            console.log(err)
+          })
+        } else {
+          for (let i = 0; i < 5; i++) {
+            this.tableData[i].date = this.$store.state.list[i].time
+            this.tableData[i].money = this.$store.state.list[i].price
+            this.tableData[i].flag = this.$store.state.list[i].flg
+          }
+          this.getmoneySum();
+
+        }
       }
-
-
-
     },
 
     data() {
@@ -167,7 +211,6 @@
             date: '2016-05-02',
             type: '天然气',
             flag: 1,
-            city: '天然气',
             money: -100
           }, {
             date: '2016-05-04',
