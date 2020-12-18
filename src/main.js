@@ -7,12 +7,14 @@ import PageHeader from '@/components/common/Header.vue'
 import LabelBox from '@/components/common/LabelBox.vue';
 import Mock from '@/mock'
 import store from './store/index'
+import util from '@/util/util.js'
 import '@/plugins/axios'
 import '@/plugins/element.js'
 import '@/styles/iconfont/iconfont.js'
 import 'vant/lib/index.css';
 
 Vue.use(Vant);
+Vue.prototype.$util = util;
 Vue.config.productionTip = false
 
 Vue.component("PageHeader", PageHeader); //注册组件
