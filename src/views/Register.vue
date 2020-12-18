@@ -2,17 +2,19 @@
 
 	<van-form @submit="onSubmit">
 		<!-- 输入用户名以及密码 -->
-		<van-field v-model="username" name="用户名" label="用户名" placeholder="用户名" :rules="[{ validator1, message: '请输入正确用户名' }]" />
-		<van-field v-model="password" type="password" name="密码" label="密码" placeholder="密码" :rules="[[{ validator2, message: '请输入正确密码' }]]" />
+		<page-header title="注册" />
+		<van-field v-model="signMessage.username" name="用户名" label="用户名" placeholder="用户名"
+			:rules="[{ validator1, message: '请输入正确用户名' }]" />
+		<van-field v-model="signMessage.password" type="password" name="密码" label="密码" placeholder="密码"
+			:rules="[[{ validator2, message: '请输入正确密码' }]]" />
 		<!-- 选择小区 -->
-		<van-picker v-model="where1" title="选择小区" show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel"
-		 @change="onChange" />
+		<van-picker v-model="where1" title="选择小区" show-toolbar :columns="columns" @confirm="onConfirm"
+			:visible-item-count="4" @cancel="onCancel" @change="onChange" />
 		<!-- 选择身份 -->
-		<div>
-			<nobr>请选择您的身份:</nobr>
-			<van-radio-group v-model="radio" direction="horizontal">
-				<van-radio name="1">物业</van-radio>
-				<van-radio name="2">业主</van-radio>
+		<div style="display:flex; justify-content: start; align-items: center; padding: 10px 16px">
+			<van-radio-group v-model="signMessage.role" direction="horizontal">
+				<van-radio name="1">业主</van-radio>
+				<van-radio name="2">物业</van-radio>
 			</van-radio-group>
 		</div>
 		<van-field v-model="where2" name="具体住址" label="具体住址" />
@@ -48,19 +50,17 @@
 	export default {
 		data() {
 			return {
-				username: '',
-				password: '',
 				where1: '',
 				where2: '',
-				radio: '1',
 				columns: ['金华小区', '长安小区', '富华里小区', '东方小区'],
 				//signMessage是向服务器发送的数据
 				signMessage: {
-					username: '',
+					id: 0,
+					imagePath: '',
 					password: '',
-					where1: '',
-					where2: '',
-					radio: '1'
+					phoneNumber: '',
+					role: "1",
+					username: ''
 				}
 			};
 		},
@@ -75,28 +75,22 @@
 				console.log(values);
 			},
 			onCancel() {
-				
+
 			},
 			// 校验函数返回 true 表示校验通过，false 表示不通过
 			validator1(val) {
-			     return /^\S/.test(val);
+				return /^\S/.test(val);
 			},
 			validator2(val) {
-			     return /^\S/.test(val);
+				return /^\S/.test(val);
 			},
 			//传递用户名，密码，小区等信息给服务器,signMessage是发送给服务器数据，isMsg是判断数据
 			setmessage() {
-				 axios.get('http://121.196.105.252:8000/repairs', this.signMessage).then(isMsg => {
-						if(isMsg){
-							this.$router.replace({
-								path: '/SignIn'
-							});
-						}
-						else{
-							alert('用户名或密码错误');
-						}
-			
-				 })
+				axios.post('http://121.196.105.252:8000/register', this.signMessage).then(isMsg => {
+					if (isMsg.status == 200) {
+						this.$router.go(-1);
+					}
+				})
 			}
 		},
 	}

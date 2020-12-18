@@ -9,7 +9,6 @@
     <!-- footer start -->
     <label-box></label-box>
     <!-- footer end -->
-
   </div>
 </template>
 
@@ -30,7 +29,6 @@
 
   };
 </script>
-
 
 <style>
 

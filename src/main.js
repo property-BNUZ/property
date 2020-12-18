@@ -10,8 +10,10 @@ import '@/plugins/axios'
 import '@/plugins/element.js'
 import '@/styles/iconfont/iconfont.js'
 import 'vant/lib/index.css';
+import util from '@/util/util.js'
 
 Vue.use(Vant);
+Vue.prototype.$util = util;
 Vue.config.productionTip = false
 
 Vue.component("PageHeader", PageHeader); //注册组件

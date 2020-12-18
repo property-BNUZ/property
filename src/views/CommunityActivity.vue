@@ -21,12 +21,15 @@
         },
         methods: {
             getData() {
-                axios.get('http://127.0.0.1:8000/activity').then((res) => {
+                axios.get('http://121.196.105.252:8000/activity').then((res) => {
                     console.log(res);
                     this.image = res.data.image;
                 });
                 axios.get()
             }
+        },
+        mounted() {
+            this.getData();
         }
     }
 </script>

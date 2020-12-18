@@ -3,20 +3,22 @@
         <page-header title="住户中心" />
 
         <info-display :info="info" />
+        <template v-if="login">
+            <van-divider content-position="left">基础服务</van-divider>
+            <base-service :icons="baseServiceIcons" />
 
-        <van-divider content-position="left">基础服务</van-divider>
-        <base-service :icons="baseServiceIcons" />
+            <van-divider content-position="left">超市订单</van-divider>
+            <supermarket-service :icons="supermarketServiceIcons" />
+        </template>
 
-        <van-divider content-position="left">超市订单</van-divider>
-        <supermarket-service :icons="supermarketServiceIcons" />
-
-        <setting-and-about />
+        <setting-and-about :login="login" />
 
         <label-box />
     </div>
 </template>
 
 <script>
+    import '@/util/util.js'
     import InfoDisplay from '@/components/self/InfoDisplayBox.vue';
     import IconBox from '@/components/self/IconBox.vue';
     import SettingAndAbout from '@/components/self/SettingAndAbout.vue';
@@ -29,6 +31,7 @@
         },
         data() {
             return {
+                login: false,
                 baseServiceIcons: [{
                     image: '#icon-shouye-copy',
                     title: '我的房屋',
@@ -72,17 +75,38 @@
             }
         },
         methods: {
-            getDate() {
-                axios.get('/api/self.json').then(this.handleGetData);
-            },
-            handleGetData(res) {
-                if (res.status === 200) {
-                    this.info = res.data.info
+            getDate(username) {
+                console.log(this.$util.getUserInfo().username);
+                console.log(this.$util.getUser()
+                    .username);
+                console.log(this.$util.getUserInfo().username == this.$util.getUser()
+                    .username);
+                if (this.$util.getUserInfo() != null && this.$util.getUserInfo().username == this.$util.getUser()
+                    .username) {
+                    this.info = this.$util.getUserInfo();
+                    return;
                 }
+                axios.post('http://121.196.105.252:8000/getUserInfo/' + username).then(res => {
+                    if (res.status == 200) {
+
+                        this.info = res.data;
+                        let temp = res.data;
+                        const userInfo = JSON.stringify(temp);
+                        window.sessionStorage.setItem('userInfo', userInfo);
+                        // console.log(this.info);
+                    }
+                });
             }
         },
         mounted() {
-            this.getDate()
+            var user = this.$util.getUser();
+            if (user == null) {
+                this.login = false;
+            } else {
+                this.login = true;
+                this.getDate(user.username);
+            }
+            // console.log(userInfo);
         }
     }
 </script>

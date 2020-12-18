@@ -1,10 +1,11 @@
 <template>
     <div>
-        <van-row type="flex" justify="space-around">
+        <van-row type="flex" justify="space-around" @click="toLogin">
             <van-col span="1">
-                <van-image round width="5rem" height="5rem" :src="info.avatar" />
+                <van-image round width="5rem" height="5rem" :src="'data:image;base64,' + info.image" />
             </van-col>
-            <van-col span="12">手机号：{{info.phoneNumber}}</van-col>
+            <van-col span="12" v-if="login">手机号：{{info.user.phoneNumber}}</van-col>
+            <van-col span="12" v-if="!login">请点击登录</van-col>
         </van-row>
     </div>
 </template>
@@ -15,6 +16,20 @@
             info: {
                 type: Object
             }
+        },
+        data() {
+            return {
+                login: this.$util.getUser() != null,
+            }
+        },
+        methods: {
+            toLogin() {
+                this.$router.push("/SignIn");
+                return
+            }
+        },
+        mounted() {
+            console.log(this.$util.getUser() == null);
         }
     }
 </script>

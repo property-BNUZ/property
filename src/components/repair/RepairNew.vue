@@ -41,6 +41,7 @@
                 let value =
                     nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
                 this.repairRecord.date = value;
+                console.log(this.repairRecord);
                 axios.post('http://121.196.105.252:8000/repair', this.repairRecord).then(res => {
                     console.log(res);
                 });
