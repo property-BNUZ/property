@@ -1,5 +1,6 @@
 <template>
     <div>
-        <div>测试git冲突</div>
+        <div>asdkasdkhjsadk</div>
+        <div>测试yhcs</div>
     </div>
 </template>
