@@ -5,15 +5,14 @@ import Vant from 'vant';
 
 import PageHeader from '@/components/common/Header.vue'
 import LabelBox from '@/components/common/LabelBox.vue';
-
+import Mock from '@/mock'
+import store from './store/index'
 import '@/plugins/axios'
 import '@/plugins/element.js'
 import '@/styles/iconfont/iconfont.js'
 import 'vant/lib/index.css';
-import util from '@/util/util.js'
 
 Vue.use(Vant);
-Vue.prototype.$util = util;
 Vue.config.productionTip = false
 
 Vue.component("PageHeader", PageHeader); //注册组件
@@ -21,5 +20,6 @@ Vue.component("LabelBox", LabelBox); //注册组件
 
 new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount('#app')
