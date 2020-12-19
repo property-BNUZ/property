@@ -33,7 +33,7 @@
                     },
                     {
                         id: "004",
-                        img: "#icon-baoshibaoxiu",
+                        img: "#icon-suo-copy",
                         desc: "手机开门",
                         link: 'Door'
                     },

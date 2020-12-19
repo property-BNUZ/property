@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <door-header :title="title" /> -->
     <page-header :title="title" :backurl='this.$route.query.backurl' />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <van-swipe-cell>
