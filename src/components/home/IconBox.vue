@@ -33,7 +33,7 @@
                     },
                     {
                         id: "004",
-                        img: "#icon-suo-copy",
+                        img: "#icon-weixinkaimen",
                         desc: "手机开门",
                         link: 'Door'
                     },
