@@ -17,7 +17,7 @@
                         id: "001",
                         img: "#icon-gonggao",
                         desc: "小区公告",
-                        link: 'Announcement'
+                        link: ''
                     },
                     {
                         id: "002",
@@ -33,7 +33,7 @@
                     },
                     {
                         id: "004",
-                        img: "#icon-weixinkaimen",
+                        img: "#icon-baoshibaoxiu",
                         desc: "手机开门",
                         link: 'Door'
                     },
@@ -47,7 +47,7 @@
                         id: "006",
                         img: "#icon-gouwuche",
                         desc: "生活超市",
-                        link: ''
+                        link: '' 
                     },
                     {
                         id: "007",

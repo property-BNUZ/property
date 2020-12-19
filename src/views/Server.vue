@@ -67,7 +67,8 @@
                     {
                         id: "016",
                         img: "#icon-zhongdiangong",
-                        desc: "钟点工"
+                        desc: "钟点工",
+                        link:'clean'
                     },
                     {
                         id: "017",
