@@ -95,7 +95,7 @@
 			setmessage() {
 				console.log(this.signMessage);
 				Toast.loading({
-					message: '加载中...',
+					message: '登录中...',
 					forbidClick: true,
 				});
 				axios.post('http://121.196.105.252:8000/login', this.signMessage).then(isSignMessane => {
