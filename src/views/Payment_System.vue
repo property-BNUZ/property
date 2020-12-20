@@ -145,8 +145,8 @@
           var userId = JSON.parse(sessionStorage.getItem('user'));      
           axios.get('http://121.196.105.252:8000/payment/' + userId.id ).then((res) => {
             var temp
-            for (var i = 0; i < 4; i++) {
-              console.log(res.data)
+            for (let i = 0; i < 5; i++) {
+            
               if (res.data[i].price > 0) {
                 temp = 0
               } else {
@@ -163,13 +163,11 @@
               this.tableData[i].money = this.$store.state.list[i].price
               this.tableData[i].flag = this.$store.state.list[i].flg
             }
-            console.log(this.tableData);
             this.getmoneySum();
-
+            console.log(this.tableData);
           }).catch((err) => {
             console.log(err)
           })   
-          this.getmoneySum();
       }
     },
 
