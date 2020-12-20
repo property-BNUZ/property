@@ -6,7 +6,7 @@
         </div>
         <div style="margin-left: 10%;">
             <a href="alipayqr://platformapi/startapp?appId=20000234">
-                <van-button style="display: inline; margin-right: 10%;" type="info">打开刷脸支付</van-button>
+                <van-button style="display: inline; margin-right: 7%;" type="info">打开刷脸支付</van-button>
             </a>
             <a href="alipayqr://platformapi/startapp?saId=10000007">
                 <van-button type="info">打开扫码支付</van-button>

@@ -1,52 +1,70 @@
 <template>
-  <div>
+<div>
     <page-header :title="title" :backurl='this.$route.query.backurl' />
-    <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
-    <van-swipe-cell>
-      <van-card desc="住址：4栋1单元101" title="姓名：李爱国" thumb="https://img.yzcdn.cn/vant/cat.jpeg">
-        <template #tags>
-          <van-button size="mini" color="linear-gradient(to right, #88c1fa, #1989fa)" @click="showList=true">历史记录
-          </van-button>
-        </template>
-      </van-card>
-    </van-swipe-cell>
-  </div>
+<el-row>
+    <el-col :span="24" v-for="(item, index) in ano" :key="index">
+      <el-card class="box-card">
+        <div class="p1">{{item.title}}</div>
+        <div class="p3">{{item.ano}}</div>
+        <div class="p2">{{item.date}}</div>
+    </el-card>
+    </el-col>
+</el-row>
+</div>
 </template>
 
 <script>
-  export default {
-    components: {
-    },
-    computed: {
-      text() {
-        return this.currentRate.toFixed(0) + '%';
-      },
-    },
-    methods: {
-
-    },
-      mounted() {
-          },
-    data() {
-      return {
+export default {
+  data() {
+    return {
         title: '小区公告',
-      }
-    },
-  }
+        ano: []
+    }
+  },
+  methods: {
+            getData() {
+                // var userId = JSON.parse(sessionStorage.getItem('user'));
+                axios.get('http://121.196.105.252:8000/announcement').then(res => {
+                    console.log(res.data);
+                    this.ano = res.data;
+                });
+            },
+        },
+        mounted(){
+            this.getData();
+        }
+}
 </script>
 
+<style scoped>
 
-<style>
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  .box-card{
+      height: 160px;
   }
 
-  .block {
-    width: 420px;
-    height: 520px;
-    background-color: #fff;
+  .p1{
+      position: relative;
+      bottom: 10px;
+      font-size: 20px;
+      font-weight: 800;
   }
+
+  .p2{
+      position: relative;
+      top: 8px;
+      font-size: 16px;
+      color: grey;
+  }
+
+  .p3{
+      position: relative;
+      top: -6px;
+      font-size: 16px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+  }
+
 </style>
