@@ -28,15 +28,12 @@
         methods: {
             afterRead(file) {
                 // 此时可以自行将文件上传至服务器
-                console.log(file.content.split(','));
                 axios.post('http://121.196.105.252:8000/user/image/' + this.$util.getUser().id + "/" + file.file.name,
                         file)
                     .then(res => {
                         // this.info.image = file.content.split(',');
-                        console.log("111111111111111111111111111111111" + this.$util.getUser().username);
                         axios.post('http://121.196.105.252:8000/getUserInfo/' + this.$util.getUser().username).then(
                             getInfoRes => {
-                                console.log(getInfoRes);
                                 this.info = getInfoRes.data;
                                 // window.sessionStorage['userInfo'] = getInfoRes.data;
                                 const userInfo = JSON.stringify(getInfoRes.data);
@@ -53,7 +50,6 @@
         mounted() {
             let user = this.$util.getUserInfo();
             this.info = user;
-            console.log(user);
             // this.info = this.$util.deepClone(user);
         }
     }

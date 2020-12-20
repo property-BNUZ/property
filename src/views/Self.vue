@@ -76,7 +76,6 @@
         },
         methods: {
             getDate(username) {
-                console.log(this.$util.getUserInfo());
                 if (this.$util.getUserInfo() != null && this.$util.getUserInfo().user.username == username) {
                     this.info = this.$util.getUserInfo();
                     return;

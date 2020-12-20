@@ -4,7 +4,6 @@ export default {
         return user;
     },
     getUserInfo: () => { //包括两个对象user和image
-        console.log(sessionStorage.getItem('userInfo'));
         let userInfo = JSON.parse(window.sessionStorage.getItem('userInfo'));
         return userInfo;
     },

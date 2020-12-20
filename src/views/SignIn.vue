@@ -93,14 +93,12 @@
 			},
 			//传递用户名，密码，小区等信息给服务器,signMessage是发送给服务器数据，isSignMessage是判断数据
 			setmessage() {
-				console.log(this.signMessage);
 				Toast.loading({
 					message: '登录中...',
 					forbidClick: true,
 				});
 				axios.post('http://121.196.105.252:8000/login', this.signMessage).then(isSignMessane => {
 					if (isSignMessane.status == 200) {
-						console.log(isSignMessane);
 						if (isSignMessane.data == true) {
 							axios.post('http://121.196.105.252:8000/getUserInfo/' + this.signMessage.username)
 								.then(res => {
