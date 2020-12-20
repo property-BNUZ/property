@@ -21,15 +21,22 @@
         },
         methods: {
             getDate() {
-                axios.get('http://121.196.105.252:8000/repairs').then(this.handleGetData);
-            },
-            handleGetData(res) {
-                console.log(res);
-                if (res.status == 200) {
-                    console.log(res.data);
-                    this.recordTableData = res.data;
+                let id = this.$util.getUser().id;
+                if (id != null) {
+                    axios.get('http://121.196.105.252:8000/repairs/' + id).then(res => {
+                        if (res.status == 200) {
+                            var temp = res.data;
+                            temp.status = temp.status == 1 ? "完成" : "未完成";
+                            for (var i = 0; i < temp.length; i++) {
+                                temp[i].status = temp[i].status == 1 ? "完成" : "未完成";
+                                console.log(temp[i]);
+                            }
+                            this.recordTableData = temp;
+
+                        }
+                    });
                 }
-            },
+            }
         },
         mounted() {
             this.getDate();

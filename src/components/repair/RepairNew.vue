@@ -21,6 +21,9 @@
 </template>
 
 <script>
+    import {
+        Dialog
+    } from 'vant';
     export default {
         data() {
             return {
@@ -37,13 +40,26 @@
         },
         methods: {
             onSubmit(values) {
+                let id = this.$util.getUser().id;
                 let nowData = new Date();
                 let value =
                     nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
                 this.repairRecord.date = value;
+                this.repairRecord.status = 2;
                 console.log(this.repairRecord);
-                axios.post('http://121.196.105.252:8000/repair', this.repairRecord).then(res => {
-                    console.log(res);
+                axios.post('http://121.196.105.252:8000/repair/' + id, this.repairRecord).then(res => {
+                    if (res.status == 200 && res.data == true) {
+                        Dialog.alert({
+                            title: '提交成功',
+                        }).then(() => {
+                            this.$router.go(-1); // on close
+                        });
+                    } else {
+                        Dialog.alert({
+                            title: '提交失败',
+                            message: '未知错误，请稍候提交',
+                        }).then(() => {});
+                    }
                 });
                 console.log('submit', this.repairRecord);
             },

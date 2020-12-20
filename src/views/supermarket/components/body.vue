@@ -160,7 +160,7 @@
         },
     }
 </script>
-<style>
+<style scoped>
     .shoppingCart {
         position: fixed;
         bottom: 0;

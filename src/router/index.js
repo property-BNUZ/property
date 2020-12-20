@@ -15,6 +15,9 @@ import Suggestion from '@/views/Suggestion.vue'
 import RepairNew from '@/components/repair/RepairNew'
 import CommunityActivity from '@/views/CommunityActivity'
 import Market from '@/views/supermarket/index'
+import Announcement from '@/views/Announcement'
+import Clean from '@/views/clean.vue'
+import dailyClean from '@/views/dailyClean.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -76,7 +79,21 @@ const routes = [{
     path: '/Market',
     name: 'Market',
     component: Market
-}, ]
+}, {
+    path: '/Announcement',
+    name: 'Announcement',
+    component: Announcement
+}, 
+{
+    path: '/Clean',
+    name: 'Clean',
+    component: Clean
+},
+{
+    path: '/dailyClean',
+    name: 'dailyClean',
+    component: dailyClean
+},]
 const router = new VueRouter({
     routes
 })

@@ -34,7 +34,7 @@
     }
   }
 </script>
-<style>
+<style scoped>
   .text1{
     font-size: 8px !important;
     margin: 5% !important;

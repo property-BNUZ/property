@@ -85,10 +85,9 @@
     methods: {
       getData() {
                 let nowData = new Date();
-                let value =
-                    nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
-                
-                axios.get('/mock/door.json').then(res => {
+                let value = nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
+                var userId = JSON.parse(sessionStorage.getItem('user'));
+                axios.get('http://121.196.105.252:8000/Door/query/' + userId.id).then(res => {
                     console.log(res.data);
                     // for(let i=0;i<res.data.length;i++){
                     //   this.listm[i] = res.data[i];
@@ -97,14 +96,13 @@
                 });
             },
              submit(values) {
-                let nowData = new Date();
-                let value =
-                    nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
+                let nowData = new Date()
+                let value = nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
                 this.state.date = value;
-                axios.post('/mock/door.json',this.state).then(res => {
+                var userId = JSON.parse(sessionStorage.getItem('user'));
+                axios.post('http://121.196.105.252:8000/Door/add/'+userId.id).then(res => {
                     console.log(res.data);
                 });
-                console.log('submit',this.state);
                 this.show = true;
             },
 
