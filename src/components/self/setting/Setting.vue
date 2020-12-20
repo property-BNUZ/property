@@ -26,6 +26,9 @@
         methods: {
             afterRead(file) {
                 // 此时可以自行将文件上传至服务器
+                axios.post('http://121.196.105.252:8000/ppp', file).then(res => {
+                    console.log(res);
+                });
                 console.log(file);
             },
             cellClick() {

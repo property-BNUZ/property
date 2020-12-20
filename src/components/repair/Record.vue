@@ -1,38 +1,38 @@
 <template>
     <div>
         <el-table :data="tableData" border style="width: 100%">
-            <el-table-column fixed prop="date" label="日期" width="110">
+            <el-table-column fixed prop="date" label="日期" width="100">
             </el-table-column>
             <el-table-column prop="contactPerson" label="姓名" width="80">
             </el-table-column>
             <el-table-column :prop="tableData.status == 1 ? 'date' : 'status' " label="状态" width="70">
             </el-table-column>
             <el-table-column fixed="right" label="操作" width="90">
-                <template>
-                    <el-button type="text" size="small" @click="dialogVisible = true">查看</el-button>
-                    <el-button type="text" size="small">编辑</el-button>
+                <template slot-scope="scope">
+                    <el-button type="text" size="small" @click="showInfo(scope.row)">查看</el-button>
+                    <el-button type="text" size="small" @click="deleteInfo(scope.row)"
+                        :disabled="scope.row.status == '完成'">
+                        撤销</el-button>
                 </template>
             </el-table-column>
         </el-table>
-        <el-dialog title="报修记录" :show-close="false" :visible.sync="dialogVisible" width="90%">
-            <van-cell-group>
-                <div>
-                    <span>标题</span>
-                </div>
-                <span>大撒旦哈手机开店好杰卡斯啊数据库大数据库打上看见啊手机开店哈市空间撒健康啊手机开店啊数据库按时静安寺到时看aks内容</span>
-
-                <!-- <van-field label="文本" value="输入框只读啊帅哥大家啊速度过回家啊是个大世界啊睡觉的噶啥汇金大厦" readonly />
-                <van-field label="文本" value="输入框已禁爱上的会计啊是肯德基啊是看见大叔就开大上看见用" disabled /> -->
+        <van-popup v-model="show" :style="{ height: '60%' , width:'80%'}">
+            <van-cell-group style="padding: 15px 10px">
+                <van-cell title="日期" :value="showRow.date" />
+                <van-cell title="单元楼及房号" :value="showRow.address" />
+                <van-cell title="联系人" :value="showRow.contactPerson" />
+                <van-cell title="手机号：" :value="showRow.phoneNumber" />
+                <van-cell title="详情：" />
+                <van-cell value-class="ppp" :value="showRow.details" />
             </van-cell-group>
-            <span slot="footer" class="dialog-footer">
-                <!-- <el-button @click="dialogVisible = false">取 消</el-button>
-                <el-button type="primary" @click="dialogVisible = false">确 定</el-button> -->
-            </span>
-        </el-dialog>
+        </van-popup>
     </div>
 </template>
 
 <script>
+    import {
+        Dialog
+    } from 'vant';
     export default {
         props: {
             tableData: {
@@ -41,7 +41,35 @@
         },
         data() {
             return {
-                dialogVisible: false
+                show: false,
+                showRow: {},
+            }
+        },
+        methods: {
+            showInfo(row) {
+                this.showRow = row;
+                this.show = true;
+                console.log(row);
+            },
+            deleteInfo(row) {
+                // if (row.status == 2) {
+                axios.delete('http://121.196.105.252:8000/repairs/' + row.id).then(res => {
+                    if (res.status == 200 && res.data == true) {
+                        Dialog.alert({
+                            title: '删除成功',
+                        }).then(() => {
+                            console.log(row);
+                            this.tableData.some((item, i) => {
+                                if (item.id == row.id) {
+                                    this.tableData.splice(i, 1);
+                                    return true;
+                                }
+                            })
+                            // this.tableData.splice(row);
+                        });
+                    }
+                });
+                // }
             }
         },
         mounted() {
@@ -54,5 +82,11 @@
 </script>
 
 <style scoped>
+    .el-dialog__body {
+        padding: 15px 10px;
+    }
 
+    .ppp {
+        color: #969799;
+    }
 </style>
