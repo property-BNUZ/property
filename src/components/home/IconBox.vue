@@ -47,7 +47,7 @@
                         id: "006",
                         img: "#icon-gouwuche",
                         desc: "生活超市",
-                        link: ''
+                        link: 'Market'
                     },
                     {
                         id: "007",
