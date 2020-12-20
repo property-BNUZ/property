@@ -141,20 +141,20 @@
       },
       testReq() {
         // var that = this
-        if (this.$store.state.list.length === 0) {
-          axios.post('/api/test').then((res) => {
-            console.log(res)
-            for (let i = 0; i < 5; i++) {
-              let temp;
-              console.log("**" + res.data.list[i].price);
-              if (res.data.list[i].price > 0) {
+          // var userId = get.sessionStorage
+          var userId = JSON.parse(sessionStorage.getItem('user'));      
+          axios.get('http://121.196.105.252:8000/payment/' + userId.id ).then((res) => {
+            var temp
+            for (var i = 0; i < 4; i++) {
+              console.log(res.data)
+              if (res.data[i].price > 0) {
                 temp = 0
               } else {
                 temp = 1
               }
               this.$store.state.list.push({
-                time: res.data.list[i].date,
-                price: res.data.list[i].price,
+                time: res.data[i].date,
+                price: res.data[i].price,
                 flg: temp
               })
             }
@@ -168,16 +168,8 @@
 
           }).catch((err) => {
             console.log(err)
-          })
-        } else {
-          for (let i = 0; i < 5; i++) {
-            this.tableData[i].date = this.$store.state.list[i].time
-            this.tableData[i].money = this.$store.state.list[i].price
-            this.tableData[i].flag = this.$store.state.list[i].flg
-          }
+          })   
           this.getmoneySum();
-
-        }
       }
     },
 
