@@ -52,7 +52,7 @@
     <!-- 历史记录 -->
     <van-dialog v-model="showList" title="历史记录如下" show-cancel-button>
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-        <van-cell v-for="item in list" :key="item" >
+        <van-cell v-for="item in list" :key="item.id" >
           <div>{{item.date}}</div>
           <div>{{item.name}}</div>
         </van-cell>
@@ -62,9 +62,6 @@
       请登录粤康码将14天内行程截图并提交
     </van-divider>
     <van-uploader v-model="fileList" multiple style="margin-left: 13px" />
-    <!-- <van-dialog v-model="show" title="" show-cancel-button>
-      <DooJ></DooJ>
-    </van-dialog> -->
     <el-dialog title="提示" :visible.sync="show" width="90%">
       <door-j></door-j>
     </el-dialog>
@@ -84,14 +81,9 @@
     },
     methods: {
       getData() {
-                let nowData = new Date();
-                let value = nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
                 var userId = JSON.parse(sessionStorage.getItem('user'));
                 axios.get('http://121.196.105.252:8000/Door/query/' + userId.id).then(res => {
                     console.log(res.data);
-                    // for(let i=0;i<res.data.length;i++){
-                    //   this.listm[i] = res.data[i];
-                    // }
                     this.list = res.data;
                 });
             },
@@ -100,7 +92,7 @@
                 let value = nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
                 this.state.date = value;
                 var userId = JSON.parse(sessionStorage.getItem('user'));
-                axios.post('http://121.196.105.252:8000/Door/add/'+userId.id).then(res => {
+                axios.post('http://121.196.105.252:8000/Door/add/' + userId.id, this.state).then(res => {
                     console.log(res.data);
                 });
                 this.show = true;
@@ -113,14 +105,6 @@
         // 异步更新数据
         // setTimeout 仅做示例，真实场景中一般为 ajax 请求
          setTimeout(() => {
-          // if(this.list.length == 0){
-          //     this.list.push('暂无历史记录');
-          //   }
-            // else{
-            //   for (let i = 0; i < this.listm.length; i++) {
-            //     this.list.push(this.listm[i]);
-            //     }
-            // }
 
           // 加载状态结束
           this.loading = false;
