@@ -3,7 +3,7 @@
         <page-header title="社区活动" />
         <!-- <button @click="getData">测试</button> -->
         <!-- <img :src="'data:image;base64,' + image"> -->
-        <activity-content :image="image" />
+        <activity-content :activities="activities" />
     </div>
 </template>
 
@@ -17,13 +17,14 @@
         data() {
             return {
                 image: '',
+                activities: []
             }
         },
         methods: {
             getData() {
-                axios.get('http://121.196.105.252:8000/activity').then((res) => {
+                axios.get('http://121.196.105.252:8000/activities').then((res) => {
                     console.log(res);
-                    this.image = res.data.image;
+                    this.activities = res.data;
                 });
                 axios.get()
             }
