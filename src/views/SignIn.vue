@@ -100,14 +100,13 @@
 				});
 				axios.post('http://121.196.105.252:8000/login', this.signMessage).then(isSignMessane => {
 					if (isSignMessane.status == 200) {
+						console.log(isSignMessane);
 						if (isSignMessane.data == true) {
 							axios.post('http://121.196.105.252:8000/getUserInfo/' + this.signMessage.username)
 								.then(res => {
 									if (res.status == 200) {
-										console.log(res);
 										this.info = res.data;
-										let temp = res.data;
-										console.log(temp);
+										let temp = this.$util.deepClone(res.data);
 										const userInfo = JSON.stringify(temp);
 										window.sessionStorage.setItem('userInfo', userInfo);
 										temp = {

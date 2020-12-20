@@ -76,9 +76,8 @@
         },
         methods: {
             getDate(username) {
-                // console.log(this.$util.getUserInfo());
-                if (this.$util.getUserInfo() != null && this.$util.getUserInfo().user.username == this.$util.getUser()
-                    .username) {
+                console.log(this.$util.getUserInfo());
+                if (this.$util.getUserInfo() != null && this.$util.getUserInfo().user.username == username) {
                     this.info = this.$util.getUserInfo();
                     return;
                 }
@@ -94,7 +93,7 @@
             }
         },
         mounted() {
-            var user = this.$util.getUser();
+            var user = this.$util.deepClone(this.$util.getUser());
             if (user == null) {
                 this.login = false;
             } else {
