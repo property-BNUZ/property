@@ -55,6 +55,7 @@
 	} from 'vant'
 	Vue.use(Radio);
 	Vue.use(RadioGroup);
+	import { Dialog } from 'vant';
 	export default {
 		data() {
 			return {
@@ -120,10 +121,12 @@
 									});
 								});
 						} else {
-							alert('用户名或密码错误');
+							Dialog({ message: '用户名或密码错误' });
+							//alert('用户名或密码错误');
 						}
 					} else {
-						alert('网络错误');
+						Dialog({ message: '网络错误' });
+						//alert('网络错误');
 					}
 
 				})
