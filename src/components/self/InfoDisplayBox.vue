@@ -28,14 +28,6 @@
                 this.$router.push("/SignIn");
                 return
             }
-        },
-        mounted() {
-            console.log(this.info);
-            console.log(this.$util.getUser() == null);
-        },
-        updated() {
-            console.log(this.info);
-
         }
     }
 </script>

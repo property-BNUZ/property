@@ -10,7 +10,7 @@
 <script>
     import NoticeHeader from '../components/common/Header';
     import LabelBox from '../components/common/LabelBox';
-    import NoticeBox from '../components/notie/notice_box.vue';
+    import NoticeBox from '../components/notice/notice_box';
     export default {
         components: {
             NoticeHeader,

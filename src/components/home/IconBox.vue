@@ -2,7 +2,7 @@
     <van-grid :border="false" :column-num="4">
         <van-grid-item v-for="(icon, index) in icons" :key="index" @click="gotolink(icon)">
             <svg class="icon" aria-hidden="true">
-            <use :xlink:href="icon.img"></use>
+                <use :xlink:href="icon.img"></use>
             </svg>
             <p>{{icon.desc}}</p>
         </van-grid-item>
@@ -51,8 +51,9 @@
                     },
                     {
                         id: "007",
-                        img: "#icon--fen-",
-                        desc: "小区家政"
+                        img: "#icon-huodongzhongxin",
+                        desc: "活动中心",
+                        link: 'CommunityActivity'
                     },
                     {
                         id: "008",
@@ -79,7 +80,6 @@
 </script>
 
 <style scoped>
-
     .icon {
         width: 40px;
         height: 40px;

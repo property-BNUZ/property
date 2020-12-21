@@ -55,6 +55,7 @@
 	} from 'vant'
 	Vue.use(Radio);
 	Vue.use(RadioGroup);
+	import { Dialog } from 'vant';
 	export default {
 		data() {
 			return {
@@ -93,7 +94,6 @@
 			},
 			//传递用户名，密码，小区等信息给服务器,signMessage是发送给服务器数据，isSignMessage是判断数据
 			setmessage() {
-				console.log(this.signMessage);
 				Toast.loading({
 					message: '登录中...',
 					forbidClick: true,
@@ -104,10 +104,8 @@
 							axios.post('http://121.196.105.252:8000/getUserInfo/' + this.signMessage.username)
 								.then(res => {
 									if (res.status == 200) {
-										console.log(res);
 										this.info = res.data;
-										let temp = res.data;
-										console.log(temp);
+										let temp = this.$util.deepClone(res.data);
 										const userInfo = JSON.stringify(temp);
 										window.sessionStorage.setItem('userInfo', userInfo);
 										temp = {
@@ -123,10 +121,12 @@
 									});
 								});
 						} else {
-							alert('用户名或密码错误');
+							Dialog({ message: '用户名或密码错误' });
+							//alert('用户名或密码错误');
 						}
 					} else {
-						alert('网络错误');
+						Dialog({ message: '网络错误' });
+						//alert('网络错误');
 					}
 
 				})
