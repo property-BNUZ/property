@@ -24,21 +24,19 @@
                 </template>
             </van-card>
     
-            <van-card :num='this.good2' price="2.00" desc="描述信息" title="商品标题" thumb="https://img.yzcdn.cn/vant/ipad.jpeg">
+            <van-card :num='this.good2' price="2.00" desc="怡宝" title="生命之泉" thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgfs17.gomein.net.cn%2FT1.6_5BKVv1RCvBVdK_160.jpg&refer=http%3A%2F%2Fgfs17.gomein.net.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611053367&t=b0fea60dc7fdea5dd1f70216a59ec62f">
                 <template #tags>
-                    <van-tag plain type="danger">标签</van-tag>
-                    <van-tag plain type="danger">标签</van-tag>
+                    <van-tag plain type="danger">口感好</van-tag>
+                    <van-tag plain type="danger">便宜</van-tag>
                 </template>
                 <template #footer>
                     <van-button @click='add2() ' size="mini">+</van-button>
                 </template>
             </van-card>
-    
-            <van-card :num='this.good3' ref="good2" price="2.00" desc="描述信息" title="商品标题"
-                thumb="https://img.yzcdn.cn/vant/ipad.jpeg">
+            <van-card :num='this.good3' ref="good2" price="2.00" desc="可乐" title=""
+                thumb="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2084947871,3172739906&fm=26&gp=0.jpg">
                 <template #tags>
-                    <van-tag plain type="danger">标签</van-tag>
-                    <van-tag plain type="danger">标签</van-tag>
+                    <van-tag plain type="danger">肥仔快乐水</van-tag>
                 </template>
                 <template #footer>
                     <van-button @click='add3()' size="mini">+</van-button>
@@ -49,7 +47,6 @@
                 <van-goods-action>
                     <van-goods-action-icon icon="cart-o" :badge="this.badge" text="购物车" />
                     <van-goods-action-icon icon="shop-o" text="店铺" />
-    
                     <van-goods-action-button type="danger"  @click="showShare = true"
                         text="立即购买" />
                 </van-goods-action>
@@ -101,7 +98,8 @@
                 dialogVisible: false,
                 flag1: false, // 显示的状态
                 flagcar: true,
-                flag2: true
+                flag2: true,
+                money : 0
             }
         },
         mounted() {            
@@ -118,9 +116,9 @@
                 console.log(this.flag1);
             },
             onSelect(option) {
+                this.money = this.money * 100
                 this.showShare = false;
 
-                // dialogVisible1 = true;
                 this.dialogVisible = true;
 
             },
@@ -129,13 +127,19 @@
             },
             add1() {
                 this.good1++;
+                this.money += 90;
                 setTimeout(this.add, 2200);
+
             },
             add2() {
                 this.good2++;
+                this.money += 2;
+                this.add();
             },
             add3() {
+                this.money += 2;
                 this.good3++;
+                this.add();
             },
             beforeEnter(el) { // 小球开始动画之前的起始状态
                 el.style.transform = 'translate(350px, 70px)'
