@@ -23,7 +23,6 @@ export default {
   },
   methods: {
             getData() {
-                // var userId = JSON.parse(sessionStorage.getItem('user'));
                 axios.get('http://121.196.105.252:8000/announcement').then(res => {
                     console.log(res.data);
                     this.ano = res.data;

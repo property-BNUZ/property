@@ -97,10 +97,6 @@
                 });
                 this.show = true;
             },
-
-      // change() {
-      //   this.show = true;
-      // },
       onLoad() {
         // 异步更新数据
         // setTimeout 仅做示例，真实场景中一般为 ajax 请求

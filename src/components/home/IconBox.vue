@@ -17,7 +17,7 @@
                         id: "001",
                         img: "#icon-gonggao",
                         desc: "小区公告",
-                        link: ''
+                        link: 'Announcement'
                     },
                     {
                         id: "002",
