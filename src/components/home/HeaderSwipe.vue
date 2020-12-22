@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div style="background-color: #fab90a;line-height: 50px;padding-left: 150px;color: white;">
-            物业管理
+        <div style="display:flex; justify-content: center; background-color: #fab90a; line-height: 50px;color: white;">
+            <span>
+                物业管理
+            </span>
         </div>
         <!-- banner 轮播 start -->
         <el-carousel height="200px">
