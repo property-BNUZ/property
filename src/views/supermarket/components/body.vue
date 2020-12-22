@@ -1,20 +1,21 @@
 <template>
     <div>
-        <a @click= "text1">      
+        <a @click="text1">
             <transition name="fade1">
                 <h3 v-show="flag2">全部商品</h3>
             </transition>
-            </a>
-        <a @click= "text">      
-        <transition name="fade">
-             <h3  v-show="flag1">评价</h3> 
-        </transition>
         </a>
-        <div class="car" v-show = "flagcar">
+        <a @click="text">
+            <transition name="fade">
+                <h3 v-show="flag1">评价</h3>
+            </transition>
+        </a>
+        <div class="car" v-show="flagcar">
             <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
                 <div id="ball" v-show="flag"></div>
             </transition>
-            <van-card :num='this.good1' price="90.00" desc="好喝" title="Helens可乐桶" thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FAkjg3OenYTI2PtZkGWbQBwUmL0r3icYnIUjYPibNAlOQ3tQOHyYEXU7hRibOFTTVAku5bl1mTlQP9UHuHdxkbAcBA%2F0%3Fwx_fmt%3Djpeg&refer=http%3A%2F%2Fmmbiz.qpic.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611037754&t=bc33e42772e52afb613e87428056426d">
+            <van-card :num='this.good1' price="90.00" desc="好喝" title="Helens可乐桶"
+                thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FAkjg3OenYTI2PtZkGWbQBwUmL0r3icYnIUjYPibNAlOQ3tQOHyYEXU7hRibOFTTVAku5bl1mTlQP9UHuHdxkbAcBA%2F0%3Fwx_fmt%3Djpeg&refer=http%3A%2F%2Fmmbiz.qpic.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611037754&t=bc33e42772e52afb613e87428056426d">
                 <template #tags>
                     <van-tag plain type="danger">针不戳</van-tag>
                     <van-tag plain type="danger">全国统一姿势</van-tag>
@@ -23,8 +24,9 @@
                     <van-button @click='add1(),flag=!flag ' size="mini">+</van-button>
                 </template>
             </van-card>
-    
-            <van-card :num='this.good2' price="2.00" desc="怡宝" title="生命之泉" thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgfs17.gomein.net.cn%2FT1.6_5BKVv1RCvBVdK_160.jpg&refer=http%3A%2F%2Fgfs17.gomein.net.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611053367&t=b0fea60dc7fdea5dd1f70216a59ec62f">
+
+            <van-card :num='this.good2' price="2.00" desc="怡宝" title="生命之泉"
+                thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgfs17.gomein.net.cn%2FT1.6_5BKVv1RCvBVdK_160.jpg&refer=http%3A%2F%2Fgfs17.gomein.net.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611053367&t=b0fea60dc7fdea5dd1f70216a59ec62f">
                 <template #tags>
                     <van-tag plain type="danger">口感好</van-tag>
                     <van-tag plain type="danger">便宜</van-tag>
@@ -45,28 +47,36 @@
             <div class="shoppingCart">
                 <!-- <van-icon name="shopping-cart" color="#1989fa" size="3rem"  badge="9"  />     -->
                 <van-goods-action>
-                    <van-goods-action-icon icon="cart-o" :badge="this.badge" text="购物车" />
+                    <van-goods-action-icon icon="cart-o" :badge="this.badge" text="购物车" @click="openCar" />
                     <van-goods-action-icon icon="shop-o" text="店铺" />
-                    <van-goods-action-button type="danger"  @click="showShare = true"
-                        text="立即购买" />
+                    <van-goods-action-button type="danger" @click="showShare = true" text="立即购买" />
                 </van-goods-action>
                 <van-share-sheet v-model="showShare" title="选择缴费方式" @select="onSelect" :options="options" />
             </div>
-            <el-dialog title="提示" :visible.sync="dialogVisible" width="95%"   >
+            <el-dialog title="提示" :visible.sync="dialogVisible" width="95%">
                 <Mypay :masg="money"></Mypay>
             </el-dialog>
+
+            <van-dialog v-model="showCar" title="标题" show-cancel-button>
+                <van-card v-if = "this.good1"  :num='this.good1' price="90.00" desc="好喝" title="Helens可乐桶"
+                    thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FAkjg3OenYTI2PtZkGWbQBwUmL0r3icYnIUjYPibNAlOQ3tQOHyYEXU7hRibOFTTVAku5bl1mTlQP9UHuHdxkbAcBA%2F0%3Fwx_fmt%3Djpeg&refer=http%3A%2F%2Fmmbiz.qpic.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611037754&t=bc33e42772e52afb613e87428056426d">
+                    <template #footer>
+                        <van-button @click='minus1(),flag=!flag ' size="mini"><p style="font-size: 28px;" >-</p></van-button>
+                    </template>
+                </van-card>
+            </van-dialog>
         </div>
-        <comments v-show = "!flagcar"></comments>
+        <comments v-show="!flagcar"></comments>
     </div>
 </template>
 
 <script>
     import Mypay from '../../../components/payment/pay.vue'
-    import comments  from '../components/comment.vue'
+    import comments from '../components/comment.vue'
     export default {
         props: {
-      source: String
-    },
+            source: String
+        },
         components: {
             Mypay,
             comments
@@ -99,18 +109,22 @@
                 flag1: false, // 显示的状态
                 flagcar: true,
                 flag2: true,
-                money : 0
+                money: 0,
+                showCar: false,
+
             }
         },
-        mounted() {            
-        },
+        mounted() {},
         methods: {
-            text(){
+            openCar() {
+                this.showCar = true
+            },
+            text() {
                 this.flag1 = !this.flag1;
                 this.flagcar = !this.flagcar;
                 console.log(this.flag1);
             },
-            text1(){
+            text1() {
                 this.flag2 = !this.flag2;
                 this.flagcar = !this.flagcar;
                 console.log(this.flag1);
@@ -124,6 +138,9 @@
             },
             add() {
                 this.badge++;
+            },
+            minus() {
+                this.badge--;
             },
             add1() {
                 this.good1++;
@@ -140,6 +157,11 @@
                 this.money += 2;
                 this.good3++;
                 this.add();
+            },
+            minus1() {
+                this.good1--;
+                this.money -= 90;
+                this.minus();
             },
             beforeEnter(el) { // 小球开始动画之前的起始状态
                 el.style.transform = 'translate(350px, 70px)'
@@ -184,34 +206,38 @@
         border-radius: 50%;
         z-index: 9999 !important;
     }
-    .fade-enter{
-      opacity: 0.8;      
+
+    .fade-enter {
+        opacity: 0.8;
     }
+
     .fade-enter-active,
     .fade-leave-active {
-      opacity: 0.8;
-      transition: all 3s ease;
-      transform: rotateY(360deg);
+        opacity: 0.8;
+        transition: all 3s ease;
+        transform: rotateY(360deg);
 
     }
 
-    .fade1-enter{
-      opacity: 0.8;      
+    .fade1-enter {
+        opacity: 0.8;
     }
-    .fade1-enter{
-      opacity: 0.8;      
+
+    .fade1-enter {
+        opacity: 0.8;
     }
+
     .fade1-enter-active,
     .fade1-leave-active {
-      opacity: 0.8;
-      transition: all 3s ease;
-      transform: rotateY(360deg);
+        opacity: 0.8;
+        transition: all 3s ease;
+        transform: rotateY(360deg);
 
     }
 
     h3 {
-      opacity: 0.9;
-      display: inline-block !important;
-      transform: rotateY(0deg);
+        opacity: 0.9;
+        display: inline-block !important;
+        transform: rotateY(0deg);
     }
 </style>

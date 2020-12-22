@@ -18,6 +18,9 @@
 </template>
 
 <script>
+    import {
+		Toast
+	} from 'vant';
     export default {
         data() {
             return {
@@ -28,6 +31,10 @@
         methods: {
             afterRead(file) {
                 // 此时可以自行将文件上传至服务器
+                Toast.loading({
+                    message: '上传中...',
+                    forbidClick: true,
+                });
                 axios.post('http://121.196.105.252:8000/user/image/' + this.$util.getUser().id + "/" + file.file.name,
                         file)
                     .then(res => {
@@ -38,6 +45,7 @@
                                 // window.sessionStorage['userInfo'] = getInfoRes.data;
                                 const userInfo = JSON.stringify(getInfoRes.data);
                                 window.sessionStorage.setItem('userInfo', userInfo);
+                                Toast.success('上传成功');
                             });
                     });
 
