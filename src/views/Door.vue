@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <door-header :title="title" /> -->
     <page-header :title="title" :backurl='this.$route.query.backurl' />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <van-swipe-cell>
@@ -34,12 +33,18 @@
           <br />
         </span>
       </div>
+
+      <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
+      请登录粤康码将14天内行程截图并提交
+    </van-divider>
+    <van-uploader v-model="fileList" multiple style="margin-left: 13px" />
+
       <template #footer #right>
         <van-button size="small" type="danger" style="margin-left: 130px" @click="dialogVisible = true"
           color="linear-gradient(to right, #88c1fa, #1989fa)">申请通行码</van-button>
       </template>
     </van-panel>
-    <!-- 弹窗缴费 -->
+    <!-- 弹窗来访信息填写 -->
     <van-dialog v-model="dialogVisible" title="请如实填写一下信息" show-cancel-button @confirm="submit">
       <div style="padding: 30px">
         <van-field name="姓名" label="姓名" v-model="state.name" placeholder="请填真实姓名" />
@@ -48,7 +53,7 @@
         <van-field name="身份证号码" label="身份证号码" v-model="state.idCard"  placeholder="请填写完整的身份证号码" />
       </div>
     </van-dialog>
-    <!-- </van-notify> -->
+    
     <!-- 历史记录 -->
     <van-dialog v-model="showList" title="历史记录如下" show-cancel-button>
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
@@ -58,11 +63,7 @@
         </van-cell>
       </van-list>
     </van-dialog>
-    <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
-      请登录粤康码将14天内行程截图并提交
-    </van-divider>
-    <van-uploader v-model="fileList" multiple style="margin-left: 13px" />
-    <el-dialog title="提示" :visible.sync="show" width="90%">
+    <el-dialog title="进出码请出示二维码" :visible.sync="show" width="90%">
       <door-j></door-j>
     </el-dialog>
   </div>
@@ -94,6 +95,7 @@
                 var userId = JSON.parse(sessionStorage.getItem('user'));
                 axios.post('http://121.196.105.252:8000/Door/add/' + userId.id, this.state).then(res => {
                     console.log(res.data);
+                    this.getData();
                 });
                 this.show = true;
             },
