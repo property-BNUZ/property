@@ -85,9 +85,6 @@
       getData() {
                 var userId = JSON.parse(sessionStorage.getItem('user'));
                 this.info = this.$util.getUserInfo();
-                console.log(this.info);
-                this.test = info.image
-                console.log(this.test);
                 axios.get('http://121.196.105.252:8000/Door/query/' + userId.id).then(res => {
                     console.log(res.data);
                     this.list = res.data;
