@@ -2,14 +2,12 @@
   <div>
     <page-header :title="title" :backurl='this.$route.params.backurl' />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
-    <van-swipe-cell>
-      <van-card desc="住址：4栋1单元101" title="姓名：李爱国" thumb="https://img.yzcdn.cn/vant/cat.jpeg" />
-      <template #right>
-        <van-button square text="删除" type="danger" class="delete-button" />
-      </template>
-    </van-swipe-cell>
-
-    <el-table :data="tableData" border style="width: 100%">
+    <img id="img" style="width: 100px;height: 100px;">
+    <div style="position: relative; top: -100px; left: 120px;">
+      <p>姓名：{{username}}</p>
+      <p  style="font-size:10px ;">住址：四栋1单元101</p>
+    </div>
+    <el-table :data="tableData" border style="width: 100%;position: relative; top: -80px;  ">
       <el-table-column fixed prop="date" label="日期" width="100">
       </el-table-column>
       <el-table-column prop="type" label="欠费类型" width="80">
@@ -133,7 +131,7 @@
       },
       getmoneySum() {
         for (var i = 0; i < this.tableData.length - 1; i++) {
-          console.log(this.tableData[i].money);
+          // console.log(this.tableData[i].money);
           if (this.tableData[i].money < 0) {
             this.tableData[this.tableData.length - 1].money += this.tableData[i].money;
           }
@@ -141,7 +139,11 @@
       },
       testReq() {
         // var that = this
-          // var userId = get.sessionStorage
+        let userInfo = JSON.parse(window.sessionStorage.getItem('userInfo'));
+        this.username = userInfo.user.username
+          console.log(userInfo);
+          document.getElementById('img').setAttribute( 'src', 'data:image/png;base64,'+ userInfo.image );
+          // document.getElementById('img').setAttribute( 'src',userInfo.image  );
           var userId = JSON.parse(sessionStorage.getItem('user'));      
           axios.get('http://121.196.105.252:8000/payment/' + userId.id ).then((res) => {
             var temp
@@ -165,7 +167,7 @@
             }
             this.tableData[0].money += 700
             this.getmoneySum();
-            console.log(this.tableData);
+            // console.log(this.tableData);
           }).catch((err) => {
             console.log(err)
           })   
@@ -174,6 +176,7 @@
 
     data() {
       return {
+        username : '',
         title: '生活缴费',
         time: 0,
         currentRate: 0,
