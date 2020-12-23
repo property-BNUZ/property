@@ -3,7 +3,7 @@
     <page-header :title="title" :backurl='this.$route.query.backurl' />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <van-swipe-cell>
-      <van-card desc="住址：4栋1单元101" title="姓名：李爱国" thumb="https://img.yzcdn.cn/vant/cat.jpeg">
+      <van-card desc="住址：4栋1单元101" title="姓名：李爱国" :thumb="info.image == null ? '' : ('data:image;base64,' + info.image)">
         <template #tags>
           <van-button size="mini" color="linear-gradient(to right, #88c1fa, #1989fa)" @click="showList=true">历史记录
           </van-button>
@@ -70,7 +70,8 @@
 </template>
 
 <script>
-  import DoorJ from '@/components/door/doorJ.vue'
+  import DoorJ from '@/components/door/doorJ.vue';
+  import '@/util/util.js';
   export default {
     components: {
       DoorJ
@@ -83,6 +84,10 @@
     methods: {
       getData() {
                 var userId = JSON.parse(sessionStorage.getItem('user'));
+                this.info = this.$util.getUserInfo();
+                console.log(this.info);
+                this.test = info.image
+                console.log(this.test);
                 axios.get('http://121.196.105.252:8000/Door/query/' + userId.id).then(res => {
                     console.log(res.data);
                     this.list = res.data;
@@ -143,7 +148,9 @@
           sex: '',
           num: '',
           idCard: '',
-        }
+        },
+        info: {},
+        test: ''
       }
     },
   }
