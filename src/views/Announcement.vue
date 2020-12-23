@@ -1,7 +1,7 @@
 <template>
 <div>
     <page-header :title="title" :backurl='this.$route.query.backurl' >
-    <van-tag round type="primary" style="height: 50px;float: left">标签</van-tag>
+    <!-- <van-tag round type="primary" style="height: 50px;float: left">标签</van-tag> -->
     </page-header>
 <el-row>
     <el-col :span="24" v-for="(item, index) in ano" :key="index">
