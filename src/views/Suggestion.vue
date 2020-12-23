@@ -3,7 +3,7 @@
     <page-header :title="title" :backurl='this.$route.query.backurl' />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <van-swipe-cell>
-      <van-card desc="住址：4栋1单元101" title="姓名：李爱国" :thumb="info.image == null ? '' : ('data:image;base64,' + info.image)">
+      <van-card desc="住址：4栋1单元101" :title="'姓名：' + this.userName" :thumb="info.image == null ? '' : ('data:image;base64,' + info.image)">
       </van-card>
     </van-swipe-cell>
     <!-- 意见提交 -->
@@ -45,6 +45,8 @@
     },
     methods: {
       getData() {
+                this.info = this.$util.getUserInfo();
+                this.userName = this.info.user.username;
                 var userId = JSON.parse(sessionStorage.getItem('user'));
                 this.info = this.$util.getUserInfo();
                 console.log(this.info);
@@ -120,7 +122,8 @@
         finished: false,
         list: [],
         message: '',
-        info:{}
+        info:{},
+        userName: ''
     }
   }
   }
