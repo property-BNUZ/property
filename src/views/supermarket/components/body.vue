@@ -58,12 +58,32 @@
             </el-dialog>
 
             <van-dialog v-model="showCar" title="标题" show-cancel-button>
-                <van-card v-if = "this.good1"  :num='this.good1' price="90.00" desc="好喝" title="Helens可乐桶"
+                <van-card v-if="this.good1" :num='this.good1' price="90.00" desc="好喝" title="Helens可乐桶"
                     thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FAkjg3OenYTI2PtZkGWbQBwUmL0r3icYnIUjYPibNAlOQ3tQOHyYEXU7hRibOFTTVAku5bl1mTlQP9UHuHdxkbAcBA%2F0%3Fwx_fmt%3Djpeg&refer=http%3A%2F%2Fmmbiz.qpic.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611037754&t=bc33e42772e52afb613e87428056426d">
                     <template #footer>
-                        <van-button @click='minus1(),flag=!flag ' size="mini"><p style="font-size: 28px;" >-</p></van-button>
+                        <van-button @click='minus1()  ' size="mini">
+                            <p style="font-size: 28px;">-</p>
+                        </van-button>
                     </template>
                 </van-card>
+
+                <van-card v-if="this.good2" :num='this.good2'  price="2.00" desc="怡宝" title="生命之泉"
+                    thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgfs17.gomein.net.cn%2FT1.6_5BKVv1RCvBVdK_160.jpg&refer=http%3A%2F%2Fgfs17.gomein.net.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611053367&t=b0fea60dc7fdea5dd1f70216a59ec62f">
+                    <template #footer>
+                        <van-button @click='minus2() ' size="mini">
+                            <p style="font-size: 28px;">-</p>
+                        </van-button>
+                    </template>
+                </van-card>
+
+                <van-card v-if="this.good3" :num='this.good3'  price="2.00" desc="可乐" title=""
+                thumb="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2084947871,3172739906&fm=26&gp=0.jpg">
+                <template #footer>
+                    <van-button @click='minus3() ' size="mini">
+                        <p style="font-size: 28px;">-</p>
+                    </van-button>
+                </template>
+            </van-card>
             </van-dialog>
         </div>
         <comments v-show="!flagcar"></comments>
@@ -130,7 +150,7 @@
                 console.log(this.flag1);
             },
             onSelect(option) {
-                this.money = this.money * 100
+                this.money = this.money 
                 this.showShare = false;
 
                 this.dialogVisible = true;
@@ -144,23 +164,33 @@
             },
             add1() {
                 this.good1++;
-                this.money += 90;
+                this.money += 9000;
                 setTimeout(this.add, 2200);
 
             },
             add2() {
                 this.good2++;
-                this.money += 2;
+                this.money += 200;
                 this.add();
             },
             add3() {
-                this.money += 2;
+                this.money += 200;
                 this.good3++;
                 this.add();
             },
             minus1() {
                 this.good1--;
-                this.money -= 90;
+                this.money -= 9000;
+                this.minus();
+            },
+            minus2() {
+                this.good2--;
+                this.money -= 200;
+                this.minus();
+            },
+            minus3() {
+                this.good3--;
+                this.money -= 200;
                 this.minus();
             },
             beforeEnter(el) { // 小球开始动画之前的起始状态
