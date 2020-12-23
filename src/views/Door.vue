@@ -50,7 +50,7 @@
         <van-field name="姓名" label="姓名" v-model="state.name" placeholder="请填真实姓名" />
         <van-field name="性别" label="性别" v-model="state.sex"  placeholder="请填性别" />
         <van-field name="手机号" label="手机号" v-model="state.num"  placeholder="请填真实手机号" />
-        <van-field name="身份证号码" label="身份证号码" v-model="state.idCard"  placeholder="请填写完整的身份证号码" />
+        <van-field name="身份证号码" label="身份证号码" v-model="state.idCard"  placeholder="请填写完整的身份证号" />
       </div>
     </van-dialog>
     
@@ -63,7 +63,7 @@
         </van-cell>
       </van-list>
     </van-dialog>
-    <el-dialog title="进出码请出示二维码" :visible.sync="show" width="90%">
+    <el-dialog title="进出请出示二维码" :visible.sync="show" width="90%">
       <door-j></door-j>
     </el-dialog>
   </div>
