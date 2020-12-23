@@ -4,7 +4,7 @@
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <img id="img" style="width: 100px;height: 100px;">
     <div style="position: relative; top: -100px; left: 120px;">
-      <p>姓名：杨浩</p>
+      <p>姓名：{{username}}</p>
       <p style="font-size:10px ;">住址：四栋1单元101</p>
     </div>
     <el-table :data="tableData" border style="width: 100%;position: relative; top: -80px;  ">
@@ -140,6 +140,8 @@
       testReq() {
         // var that = this
         let userInfo = JSON.parse(window.sessionStorage.getItem('userInfo'));
+        this.username = userInfo.user.username
+        // console.log(userInfo);
         document.getElementById('img').setAttribute('src', 'data:image/png;base64,' + userInfo.image);
         // document.getElementById('img').setAttribute( 'src',userInfo.image  );
         var userId = JSON.parse(sessionStorage.getItem('user'));
@@ -174,6 +176,7 @@
 
     data() {
       return {
+        username: '',
         title: '生活缴费',
         time: 0,
         currentRate: 0,

@@ -49,19 +49,19 @@
         methods: {
             getData() {
                 axios.get('http://121.196.105.252:8000/announcement').then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     this.ano = res.data;
                 });
                 axios.get('/mock/ann.json').then(res => {
-                    console.log(res);
+                    // console.log(res);
                     this.news = res.data;
-                    console.log(this.news.image);
+                    // console.log(this.news.image);
                 })
             },
             Click(index) {
                 this.temp = index;
                 this.isActive = !isActive;
-                console.log(111);
+                // console.log(111);
             },
             todetail(showNews) {
                 this.$router.push({

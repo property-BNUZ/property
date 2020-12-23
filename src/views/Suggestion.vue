@@ -3,13 +3,12 @@
     <page-header :title="title" :backurl='this.$route.query.backurl' />
     <van-notice-bar left-icon="volume-o" text="请广大业主积极按时缴纳小区的电费物业费，争做文明小区，从我做起！" />
     <van-swipe-cell>
-      <van-card desc="住址：4栋1单元101" title="姓名：李爱国"
+      <van-card desc="住址：4栋1单元101" :title="'姓名：' + this.userName"
         :thumb="info.image == null ? '' : ('data:image;base64,' + info.image)">
       </van-card>
     </van-swipe-cell>
     <!-- 意见提交 -->
-    <van-field v-model="message" rows="15" autosize type="textarea" maxlength="500" placeholder="请输入留言"
-      show-word-limit />
+    <van-field v-model="message" rows="15" cols="100" autosize type="textarea" placeholder="请输入留言" maxlength="500" />
     <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
       提交图片
     </van-divider>
@@ -41,9 +40,11 @@
     },
     methods: {
       getData() {
+        this.info = this.$util.getUserInfo();
+        this.userName = this.info.user.username;
         var userId = JSON.parse(sessionStorage.getItem('user'));
         this.info = this.$util.getUserInfo();
-        // console.log(this.info);
+        console.log(this.info);
         axios.get('http://121.196.105.252:8000/Door/query/' + userId.id).then(res => {
 
         });
@@ -113,14 +114,15 @@
         finished: false,
         list: [],
         message: '',
-        info: {}
+        info: {},
+        userName: ''
       }
     }
   }
 </script>
 
 
-<style>
+<style scoped>
   .wrapper {
     display: flex;
     align-items: center;
