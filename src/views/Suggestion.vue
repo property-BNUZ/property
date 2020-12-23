@@ -10,14 +10,13 @@
   <van-field
   v-model="message"
   rows="15"
+  cols="100"
   autosize
-  
   type="textarea"
-  maxlength="500"
   placeholder="请输入留言"
-  show-word-limit
+  maxlength="500"
 />
-  <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
+<van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
       提交图片
     </van-divider>
   <van-uploader v-model="fileList" multiple style="margin-left: 13px" />
