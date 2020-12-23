@@ -17,15 +17,15 @@
   placeholder="请输入留言"
   show-word-limit
 />
-<div style="margin: 16px; color: #1989fa;" color="#1989fa">
-    <van-button round block type="primary" native-type="submit" @click="submit">
-      匿名提交
-    </van-button>
-  </div>
   <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
       提交图片
     </van-divider>
   <van-uploader v-model="fileList" multiple style="margin-left: 13px" />
+  <div style="margin: 16px; color: #1989fa;" color="#1989fa">
+    <van-button round block type="primary" native-type="submit" @click="submit">
+      匿名提交
+    </van-button>
+  </div>
   <!-- 历史记录 -->
   <van-dialog v-model="showList" title="历史记录如下" show-cancel-button>
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
