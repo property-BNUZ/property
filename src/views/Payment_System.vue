@@ -163,6 +163,7 @@
               this.tableData[i].money = this.$store.state.list[i].price
               this.tableData[i].flag = this.$store.state.list[i].flg
             }
+            this.tableData[0].money += 700
             this.getmoneySum();
             console.log(this.tableData);
           }).catch((err) => {
