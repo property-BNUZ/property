@@ -66,13 +66,13 @@
 		},
 		methods: {
 			onSubmit(values) {
-				console.log('submit', values);
+				// console.log('submit', values);
 			},
 			onConfirm(value, index) {
-				console.log(values);
+				// console.log(values);
 			},
 			onChange(picker, value, index) {
-				console.log(values);
+				// console.log(values);
 			},
 			onCancel() {
 

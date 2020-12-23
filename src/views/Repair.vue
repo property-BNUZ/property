@@ -29,7 +29,6 @@
                             temp.status = temp.status == 1 ? "完成" : "未完成";
                             for (var i = 0; i < temp.length; i++) {
                                 temp[i].status = temp[i].status == 1 ? "完成" : "未完成";
-                                console.log(temp[i]);
                             }
                             this.recordTableData = temp;
 

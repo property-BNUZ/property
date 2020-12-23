@@ -22,12 +22,11 @@
     export default {
         data() {
             return {
-                get_money : '',
+                get_money: '',
             }
         },
         methods: {
             qrcodeScan() { //生成二维码
-            console.log(111)
                 let qrcode = new QRCode('qrcode', {
                     render: 'canvas', // 设置渲染方式（有两种方式 table和canvas，默认是canvas）  
                     background: '#f0f',
@@ -42,9 +41,7 @@
 
         mounted() {
             this.qrcodeScan(); // 注：需在mounted里触发qrcodeScan函数
-            set_money ='您已经欠费' + this.masg + '元';
-            
-            console.log(typeof(set_money));
+            set_money = '您已经欠费' + this.masg + '元';
         }
     }
 </script>

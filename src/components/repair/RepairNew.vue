@@ -46,7 +46,6 @@
                     nowData.getFullYear() + "-" + (nowData.getMonth() + 1) + "-" + nowData.getDate();
                 this.repairRecord.date = value;
                 this.repairRecord.status = 2;
-                console.log(this.repairRecord);
                 axios.post('http://121.196.105.252:8000/repair/' + id, this.repairRecord).then(res => {
                     if (res.status == 200 && res.data == true) {
                         Dialog.alert({
@@ -61,7 +60,6 @@
                         }).then(() => {});
                     }
                 });
-                console.log('submit', this.repairRecord);
             },
         },
     }

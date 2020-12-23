@@ -1,7 +1,7 @@
 <template>
     <div class="content_background">
         <page-header></page-header>
-        <van-image width="100%" height="100%" :src="('data:image;base64,' + activity.image)" />
+        <van-image width="100%" :src="('data:image;base64,' + activity.image)" />
         <div class="title_show">
             <span>{{activity.title}}</span>
             <div>
@@ -102,8 +102,6 @@
             if (this.activity != null) {
                 this.attention = this.activity.attention.split(';')
             }
-
-            console.log(this.attention);
         }
     }
 </script>
@@ -119,7 +117,7 @@
     }
 
     .title_show {
-        height: 100%;
+        height: 70px;
         margin-bottom: 10px;
         padding: 10px;
         background-color: white;

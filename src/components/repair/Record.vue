@@ -49,7 +49,6 @@
             showInfo(row) {
                 this.showRow = row;
                 this.show = true;
-                console.log(row);
             },
             deleteInfo(row) {
                 // if (row.status == 2) {
@@ -58,7 +57,6 @@
                         Dialog.alert({
                             title: '删除成功',
                         }).then(() => {
-                            console.log(row);
                             this.tableData.some((item, i) => {
                                 if (item.id == row.id) {
                                     this.tableData.splice(i, 1);
@@ -73,9 +71,6 @@
             }
         },
         mounted() {
-            for (var i in this.tableData) {
-                console.log(i);
-            }
             // this.tableData.status = this.tableData.status == 1 ? "完成" : "未完成";
         }
     }

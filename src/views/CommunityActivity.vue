@@ -20,17 +20,9 @@
                 activities: []
             }
         },
-        methods: {
-            getData() {
-                axios.get('http://121.196.105.252:8000/activities').then((res) => {
-                    console.log(res);
-                    this.activities = res.data;
-                });
-                axios.get()
-            }
-        },
+        methods: {},
         mounted() {
-            this.getData();
+            // this.getData();
         }
     }
 </script>

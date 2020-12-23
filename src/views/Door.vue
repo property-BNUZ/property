@@ -40,7 +40,7 @@
       </van-divider>
       <van-uploader v-model="fileList" multiple style="margin-left: 13px" />
 
-      <template #footer #right>
+      <template #footer>
         <van-button size="small" type="danger" style="margin-left: 130px" @click="dialogVisible = true"
           color="linear-gradient(to right, #88c1fa, #1989fa)">申请通行码</van-button>
       </template>
@@ -86,11 +86,8 @@
       getData() {
         var userId = JSON.parse(sessionStorage.getItem('user'));
         this.info = this.$util.getUserInfo();
-        console.log(this.info);
-        this.test = info.image
-        console.log(this.test);
+        this.test = this.info.image;
         axios.get('http://121.196.105.252:8000/Door/query/' + userId.id).then(res => {
-          console.log(res.data);
           this.list = res.data;
         });
       },
@@ -100,7 +97,6 @@
         this.state.date = value;
         var userId = JSON.parse(sessionStorage.getItem('user'));
         axios.post('http://121.196.105.252:8000/Door/add/' + userId.id, this.state).then(res => {
-          console.log(res.data);
           this.getData();
         });
         this.show = true;

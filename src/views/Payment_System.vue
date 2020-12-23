@@ -5,7 +5,7 @@
     <img id="img" style="width: 100px;height: 100px;">
     <div style="position: relative; top: -100px; left: 120px;">
       <p>姓名：杨浩</p>
-      <p  style="font-size:10px ;">住址：四栋1单元101</p>
+      <p style="font-size:10px ;">住址：四栋1单元101</p>
     </div>
     <el-table :data="tableData" border style="width: 100%;position: relative; top: -80px;  ">
       <el-table-column fixed prop="date" label="日期" width="100">
@@ -140,36 +140,35 @@
       testReq() {
         // var that = this
         let userInfo = JSON.parse(window.sessionStorage.getItem('userInfo'));
-          console.log(userInfo.image);
-          document.getElementById('img').setAttribute( 'src', 'data:image/png;base64,'+ userInfo.image );
-          // document.getElementById('img').setAttribute( 'src',userInfo.image  );
-          var userId = JSON.parse(sessionStorage.getItem('user'));      
-          axios.get('http://121.196.105.252:8000/payment/' + userId.id ).then((res) => {
-            var temp
-            for (let i = 0; i < 5; i++) {
-            
-              if (res.data[i].price > 0) {
-                temp = 0
-              } else {
-                temp = 1
-              }
-              this.$store.state.list.push({
-                time: res.data[i].date,
-                price: res.data[i].price,
-                flg: temp
-              })
+        document.getElementById('img').setAttribute('src', 'data:image/png;base64,' + userInfo.image);
+        // document.getElementById('img').setAttribute( 'src',userInfo.image  );
+        var userId = JSON.parse(sessionStorage.getItem('user'));
+        axios.get('http://121.196.105.252:8000/payment/' + userId.id).then((res) => {
+          var temp
+          for (let i = 0; i < 5; i++) {
+
+            if (res.data[i].price > 0) {
+              temp = 0
+            } else {
+              temp = 1
             }
-            for (let i = 0; i < 5; i++) {
-              this.tableData[i].date = this.$store.state.list[i].time
-              this.tableData[i].money = this.$store.state.list[i].price
-              this.tableData[i].flag = this.$store.state.list[i].flg
-            }
-            this.tableData[0].money += 700
-            this.getmoneySum();
-            // console.log(this.tableData);
-          }).catch((err) => {
-            console.log(err)
-          })   
+            this.$store.state.list.push({
+              time: res.data[i].date,
+              price: res.data[i].price,
+              flg: temp
+            })
+          }
+          for (let i = 0; i < 5; i++) {
+            this.tableData[i].date = this.$store.state.list[i].time
+            this.tableData[i].money = this.$store.state.list[i].price
+            this.tableData[i].flag = this.$store.state.list[i].flg
+          }
+          this.tableData[0].money += 700
+          this.getmoneySum();
+          // console.log(this.tableData);
+        }).catch((err) => {
+          console.log(err)
+        })
       }
     },
 

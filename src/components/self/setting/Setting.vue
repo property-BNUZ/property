@@ -19,8 +19,8 @@
 
 <script>
     import {
-		Toast
-	} from 'vant';
+        Toast
+    } from 'vant';
     export default {
         data() {
             return {
@@ -48,8 +48,6 @@
                                 Toast.success('上传成功');
                             });
                     });
-
-                // console.log(file.content.split(',')[1]);
             },
             cellClick() {
                 this.$refs.upload_image.chooseFile();

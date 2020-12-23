@@ -20,13 +20,13 @@
   var get_url = '';
   import Quagga from 'quagga'
   import MyList from '@/components/express/List.vue'
-  var count= 0;
+  var count = 0;
   export default {
     name: 'Barcode',
     components: {
       Quagga,
       MyList,
-      
+
     },
 
     data() {
@@ -52,10 +52,8 @@
         // .then(x => {
 
         // })
-        console.log(get_url);
       },
       decode(file) {
-        console.log(this);
         var p = this;
         Quagga.decodeSingle({
             inputStream: {
@@ -83,7 +81,6 @@
               date: count++,
               number: get_url
             });
-            console.log(get_url);
             return get_url;
           }
         )
