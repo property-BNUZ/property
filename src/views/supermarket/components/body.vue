@@ -67,7 +67,7 @@
                     </template>
                 </van-card>
 
-                <van-card v-if="this.good2" :num='this.good2'  price="2.00" desc="怡宝" title="生命之泉"
+                <van-card v-if="this.good2" :num='this.good2' price="2.00" desc="怡宝" title="生命之泉"
                     thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgfs17.gomein.net.cn%2FT1.6_5BKVv1RCvBVdK_160.jpg&refer=http%3A%2F%2Fgfs17.gomein.net.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611053367&t=b0fea60dc7fdea5dd1f70216a59ec62f">
                     <template #footer>
                         <van-button @click='minus2() ' size="mini">
@@ -76,14 +76,14 @@
                     </template>
                 </van-card>
 
-                <van-card v-if="this.good3" :num='this.good3'  price="2.00" desc="可乐" title=""
-                thumb="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2084947871,3172739906&fm=26&gp=0.jpg">
-                <template #footer>
-                    <van-button @click='minus3() ' size="mini">
-                        <p style="font-size: 28px;">-</p>
-                    </van-button>
-                </template>
-            </van-card>
+                <van-card v-if="this.good3" :num='this.good3' price="2.00" desc="可乐" title=""
+                    thumb="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2084947871,3172739906&fm=26&gp=0.jpg">
+                    <template #footer>
+                        <van-button @click='minus3() ' size="mini">
+                            <p style="font-size: 28px;">-</p>
+                        </van-button>
+                    </template>
+                </van-card>
             </van-dialog>
         </div>
         <comments v-show="!flagcar"></comments>
@@ -141,16 +141,14 @@
             },
             text() {
                 this.flag1 = !this.flag1;
-                this.flagcar = !this.flagcar;
-                console.log(this.flag1);
+                this.flagcar = false;
             },
             text1() {
                 this.flag2 = !this.flag2;
-                this.flagcar = !this.flagcar;
-                console.log(this.flag1);
+                this.flagcar = true;
             },
             onSelect(option) {
-                this.money = this.money 
+                this.money = this.money
                 this.showShare = false;
 
                 this.dialogVisible = true;

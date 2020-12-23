@@ -19,6 +19,8 @@ import Announcement from '@/views/Announcement'
 import Clean from '@/views/clean.vue'
 import dailyClean from '@/views/dailyClean.vue'
 import ActivityDetail from '@/components/CommunityActivity/ActivityDetail.vue'
+import NewsDetail from '@/components/announcement/news.vue'
+import About from '@/components/self/AboutUs.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -99,6 +101,16 @@ const routes = [{
         path: '/activityDetail',
         name: 'activityDetail',
         component: ActivityDetail
+    },
+    {
+        path: '/news/detail',
+        name: 'newsDetail',
+        component: NewsDetail
+    },
+    {
+        path: '/About',
+        name: 'About',
+        component: About
     },
 ]
 const router = new VueRouter({

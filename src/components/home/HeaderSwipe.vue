@@ -1,8 +1,8 @@
 <template>
     <div>
         <div style="display:flex; justify-content: center; background-color: #fab90a; line-height: 50px;color: white;">
-            <span>
-                物业管理
+            <span style="font-size:18px">
+                吃豆人物业管理
             </span>
         </div>
         <!-- banner 轮播 start -->
