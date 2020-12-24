@@ -4,14 +4,6 @@
             <!-- <van-tag round type="primary" style="height: 50px;float: left">标签</van-tag> -->
         </page-header>
         <van-tabs>
-            <van-tab title="社区公告">
-                <van-card :title="item.title" v-for="(item, index) in news" :key="index" :thumb="item.image"
-                    @click="todetail(item)">
-                    <template #bottom>
-                        <div>{{item.time}}</div>
-                    </template>
-                </van-card>
-            </van-tab>
             <van-tab title="物业公告">
                 <el-row>
                     <el-col :span="24" v-for="(item, index) in ano" :key="index">
@@ -26,6 +18,14 @@
                         </el-card>
                     </el-col>
                 </el-row>
+            </van-tab>
+            <van-tab title="社区公告">
+                <van-card :title="item.title" v-for="(item, index) in news" :key="index" :thumb="item.image"
+                    @click="todetail(item)">
+                    <template #bottom>
+                        <div>{{item.time}}</div>
+                    </template>
+                </van-card>
             </van-tab>
         </van-tabs>
 
