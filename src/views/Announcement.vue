@@ -52,7 +52,7 @@
                     // console.log(res.data);
                     this.ano = res.data;
                 });
-                axios.get('/mock/ann.json').then(res => {
+                axios.get('/mock/annou.json').then(res => {
                     // console.log(res);
                     this.news = res.data;
                     // console.log(this.news.image);
