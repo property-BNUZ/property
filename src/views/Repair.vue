@@ -20,7 +20,7 @@
             Record
         },
         methods: {
-            getDate() {
+            getData() {
                 let id = this.$util.getUser().id;
                 if (id != null) {
                     axios.get('http://121.196.105.252:8000/repairs/' + id).then(res => {
@@ -38,7 +38,7 @@
             }
         },
         mounted() {
-            this.getDate();
+            this.getData();
         }
     }
 </script>
