@@ -63,16 +63,12 @@
                                     return true;
                                 }
                             })
-                            // this.tableData.splice(row);
                         });
                     }
                 });
-                // }
             }
         },
-        mounted() {
-            // this.tableData.status = this.tableData.status == 1 ? "完成" : "未完成";
-        }
+        mounted() {}
     }
 </script>
 
